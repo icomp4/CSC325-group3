@@ -23,7 +23,7 @@ Ex file with file saving
 
 
 ### **2) Create a GitHub project for this idea and put the WRSPM in the project repo.
- DONE 👍**
+ DONE 👍.**
 
 ### 3) Party and Event Planner System:
 We have planned to meet on friday nights and were very flexible with our schedule and all of us would be able to set aside 10-15 min to talk about our project. We will meet either with a group phone call or discord and record the interaction using OBS or screen recorder on the iphone. 
