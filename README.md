@@ -1,1 +1,1 @@
-# CSC325-group3
+Group 3's project for software engineering
