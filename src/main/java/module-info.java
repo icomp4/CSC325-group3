@@ -4,6 +4,7 @@ module org.example.demo1 {
     requires firebase.admin;
     requires com.google.auth.oauth2;
     requires com.google.auth;
+    requires google.cloud.firestore;
 
 
     opens org.example.demo1 to javafx.fxml;
