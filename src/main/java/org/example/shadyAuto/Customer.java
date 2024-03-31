@@ -1,4 +1,4 @@
-package org.example.shadyauto;
+package org.example.shadyAuto;
 
 public class Customer {
     private String name;

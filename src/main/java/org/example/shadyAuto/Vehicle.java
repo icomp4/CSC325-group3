@@ -1,4 +1,4 @@
-package org.example.shadyauto;
+package org.example.shadyAuto;
 
 public class Vehicle {
     private Customer owner;
