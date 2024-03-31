@@ -1,4 +1,6 @@
-package shadyAuto;
+package shadyAuto.Models;
+
+import shadyAuto.Models.Customer;
 
 public class Vehicle {
     private Customer owner;

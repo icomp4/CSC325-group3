@@ -1,4 +1,4 @@
-package shadyAuto;
+package shadyAuto.Models;
 
 /*
         Employee class contains basic information that ShadyAutos employees must have.

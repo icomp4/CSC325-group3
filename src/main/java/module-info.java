@@ -11,4 +11,6 @@ module org.example.demo1 {
     exports shadyAuto;
     exports shadyAuto.FirebaseControllers;
     opens shadyAuto.FirebaseControllers to javafx.fxml;
+    exports shadyAuto.Models;
+    opens shadyAuto.Models to javafx.fxml;
 }
