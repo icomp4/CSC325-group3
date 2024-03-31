@@ -3,6 +3,7 @@ package org.example.demo1;
 public class Parts {
     private String part;
     private double price;
+    private int partID;
 
     /*
         Constructors
@@ -11,9 +12,10 @@ public class Parts {
         part = "null";
         price = -1;
     }
-    public Parts(String part, double price){
+    public Parts(String part, double price, int partID){
         this.part = part;
         this.price = price;
+        this.partID = partID;
     }
 
     /*
@@ -28,7 +30,10 @@ public class Parts {
         this.price = price;
     }
 
-    /*
+    public void setPartID(int partID) {
+        this.partID = partID;
+    }
+/*
         Getters
      */
 
@@ -38,5 +43,9 @@ public class Parts {
 
     public double getPrice() {
         return price;
+    }
+
+    public int getPartID() {
+        return partID;
     }
 }
