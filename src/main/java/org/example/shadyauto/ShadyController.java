@@ -1,4 +1,4 @@
-package org.example.demo1;
+package org.example.shadyauto;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

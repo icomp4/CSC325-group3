@@ -1,4 +1,4 @@
-package org.example.demo1;
+package org.example.shadyauto;
     /*
         Associate class for ShadyAutos employees
     */

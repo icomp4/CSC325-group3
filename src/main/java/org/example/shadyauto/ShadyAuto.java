@@ -1,4 +1,4 @@
-package org.example.demo1;
+package org.example.shadyauto;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import javafx.application.Application;

@@ -1,4 +1,4 @@
-package org.example.demo1;
+package org.example.shadyauto;
 
 public class Parts {
     private String part;

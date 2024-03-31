@@ -6,6 +6,6 @@ module org.example.demo1 {
     requires com.google.auth;
 
 
-    opens org.example.demo1 to javafx.fxml;
-    exports org.example.demo1;
+    opens org.example.shadyauto to javafx.fxml;
+    exports org.example.shadyauto;
 }
