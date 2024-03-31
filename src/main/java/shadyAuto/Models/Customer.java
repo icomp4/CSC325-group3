@@ -1,4 +1,4 @@
-package shadyAuto;
+package shadyAuto.Models;
 
 public class Customer {
     private String name;

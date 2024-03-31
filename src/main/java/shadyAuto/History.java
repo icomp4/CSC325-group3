@@ -1,5 +1,7 @@
 package shadyAuto;
 
+import shadyAuto.Models.Parts;
+
 import java.util.ArrayList;
 
 public class History {
