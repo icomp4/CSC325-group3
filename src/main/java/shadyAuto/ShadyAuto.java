@@ -1,4 +1,4 @@
-package org.example.demo1;
+package shadyAuto;
 
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.FirebaseAuth;
@@ -6,7 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import com.google.firebase.*;
+
 import java.io.IOException;
 
 public class ShadyAuto extends Application {
@@ -29,4 +29,5 @@ public class ShadyAuto extends Application {
 
         launch();
     }
+
 }

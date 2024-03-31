@@ -1,4 +1,4 @@
-package org.example.demo1;
+package shadyAuto;
 
 /*
         Employee class contains basic information that ShadyAutos employees must have.
