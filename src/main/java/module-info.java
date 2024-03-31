@@ -7,6 +7,8 @@ module org.example.demo1 {
     requires google.cloud.firestore;
 
 
-    opens org.example.demo1 to javafx.fxml;
-    exports org.example.demo1;
+    opens shadyAuto to javafx.fxml;
+    exports shadyAuto;
+    exports shadyAuto.FirebaseControllers;
+    opens shadyAuto.FirebaseControllers to javafx.fxml;
 }
