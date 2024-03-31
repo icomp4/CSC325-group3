@@ -1,7 +1,7 @@
 package shadyAuto;
 
 public class Vehicle {
-    private org.example.demo1.Customer owner;
+    private Customer owner;
     private String make;
     private String model;
     private int year;
@@ -13,7 +13,7 @@ public class Vehicle {
 
     }
 
-    public Vehicle(org.example.demo1.Customer owner, String make, String model, int year){
+    public Vehicle(Customer owner, String make, String model, int year){
         this.owner = owner;
         this.make = make;
         this.model = model;
@@ -24,7 +24,7 @@ public class Vehicle {
         Setters
     */
 
-    public void setOwner(org.example.demo1.Customer owner) {
+    public void setOwner(Customer owner) {
         this.owner = owner;
     }
 
@@ -44,7 +44,7 @@ public class Vehicle {
         Getters
     */
 
-    public org.example.demo1.Customer getOwner() {
+    public Customer getOwner() {
         return owner;
     }
 
