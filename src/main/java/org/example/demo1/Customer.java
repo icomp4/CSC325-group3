@@ -2,7 +2,7 @@ package org.example.demo1;
 
 public class Customer {
     private String name;
-    private String address;
+    private String phoneNumber;
 
     /*
         Constructors
@@ -22,8 +22,8 @@ public class Customer {
     public void setName(String name){
         this.name = name;
     }
-    public void setAddress(String address) {
-        this.address = address;
+    public void setphoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     /*
@@ -34,8 +34,8 @@ public class Customer {
         return name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getphoneNumber() {
+        return phoneNumber;
     }
 
 
