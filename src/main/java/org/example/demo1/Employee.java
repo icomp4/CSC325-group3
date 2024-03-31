@@ -59,6 +59,7 @@ public class Employee {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
     /*
         Getters
     */
