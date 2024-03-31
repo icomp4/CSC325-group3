@@ -3,6 +3,7 @@ package org.example.demo1;
 public class Customer {
     private String name;
     private String phoneNumber;
+    private int customerID;
 
     /*
         Constructors
@@ -11,8 +12,10 @@ public class Customer {
     public Customer(){
         name = "null";
     }
-    public Customer(String name){
+    public Customer(String name, String phoneNumber, int customerID){
         this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.customerID = customerID;
     }
 
     /*
@@ -26,7 +29,10 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    /*
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+/*
         Getters
     */
 
@@ -38,5 +44,7 @@ public class Customer {
         return phoneNumber;
     }
 
-
+    public int getCustomerID() {
+        return customerID;
+    }
 }
