@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Johnny Sins",
+    "monday": "9-5",
+    "tuesday": "9-5",
+    "wednesday": "9-5",
+    "thursday": "9-5",
+    "friday": "9-5",
+    "saturday": "",
+    "sunday": ""
+  },
+  {
+    "name": "Jacob",
+    "monday": "",
+    "tuesday": "",
+    "wednesday": "",
+    "thursday": "4-8",
+    "friday": "",
+    "saturday": "",
+    "sunday": ""
+  },
+  {
+    "name": "Marcus",
+    "monday": "1-10",
+    "tuesday": "",
+    "wednesday": "3-10",
+    "thursday": "",
+    "friday": "2-11",
+    "saturday": "8-5",
+    "sunday": "12-9"
+  }
+]

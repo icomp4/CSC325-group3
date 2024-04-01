@@ -1,18 +1,29 @@
 package com.example.csc325project;
 
-public class Person {
+import com.google.gson.annotations.SerializedName;
+
+public class Schedule {
+    @SerializedName("name")
     private String name;
+    @SerializedName("monday")
     private String monday = " ";
+    @SerializedName("tuesday")
     private String tuesday = " ";
+
+    @SerializedName("wednesday")
     private String wednesday = " ";
+    @SerializedName("thursday")
     private String thursday = " ";
+    @SerializedName("friday")
     private String friday = " ";
+    @SerializedName("saturday")
     private String saturday = " ";
+    @SerializedName("sunday")
     private String sunday = " ";
 
 
-    public Person(String name, String monday, String tuesday, String wednesday, String thursday,
-                  String friday, String saturday, String sunday) {
+    public Schedule(String name, String monday, String tuesday, String wednesday, String thursday,
+                    String friday, String saturday, String sunday) {
         this.name = name;
         this.monday = monday;
         this.tuesday = tuesday;

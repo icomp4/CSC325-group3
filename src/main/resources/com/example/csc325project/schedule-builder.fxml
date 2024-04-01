@@ -18,7 +18,8 @@
      <menus>
        <Menu mnemonicParsing="false" text="Menu">
          <items>
-           <MenuItem mnemonicParsing="false" onAction="#resetScheduleHandler" text="Reset Schedule" />
+           <MenuItem mnemonicParsing="false" onAction="#resetScheduleHandler" text="Clear Schedule" />
+               <MenuItem mnemonicParsing="false" onAction="#deleteScheduleHandler" text="Delete Schedule" />
          </items>
        </Menu>
      </menus>
@@ -64,8 +65,11 @@
          <Insets left="20.0" right="20.0" />
       </VBox.margin>
    </HBox>
-   <Button alignment="CENTER" mnemonicParsing="false" onAction="#addToScheduleButton" text="Add to Schedule">
-      <VBox.margin>
-         <Insets left="20.0" />
-      </VBox.margin></Button>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <children>
+         <Button alignment="CENTER" mnemonicParsing="false" onAction="#addToScheduleButton" text="Add to Schedule" />
+         <Button mnemonicParsing="false" onAction="#saveScheduleHandler" text="Save Schedule" />
+         <Button mnemonicParsing="false" onAction="#displayScheduleHandler" text="Display Schedule" />
+      </children>
+   </HBox>
 </VBox>
