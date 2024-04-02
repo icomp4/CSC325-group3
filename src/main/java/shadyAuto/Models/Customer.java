@@ -17,6 +17,7 @@ public class Customer {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.customerID = customerID;
+        this.vehicleID = vehicleID;
     }
 
     /*
