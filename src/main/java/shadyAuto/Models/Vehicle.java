@@ -7,6 +7,7 @@ public class Vehicle {
     private String make;
     private String model;
     private int year;
+    private int vehicleID;
 
     /*
         Constructors
@@ -15,11 +16,12 @@ public class Vehicle {
 
     }
 
-    public Vehicle(Customer owner, String make, String model, int year){
+    public Vehicle(Customer owner, String make, String model, int year, int vehicleID){
         this.owner = owner;
         this.make = make;
         this.model = model;
         this.year = year;
+        this.vehicleID = vehichleID;
     }
 
     /*
