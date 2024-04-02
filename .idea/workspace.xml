@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b11358bd-0977-4eea-a63a-0e354ccc55f7" name="Changes" comment="Current Schedule Builder GUI. More things are still being added soon.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule.json" afterDir="false" />
+    <list default="true" id="b11358bd-0977-4eea-a63a-0e354ccc55f7" name="Changes" comment="Updated the schedule builder interface. &#10;&#10;Included two buttons where one can save the schedule and the other can display the schedule made previously.&#10;&#10;Added a schedule.json file that will store the scheduling hours information. This file will be used to access the schedule in the employee perspective.&#10;&#10;Added two menu items that can clear the schedule view or delete the entire schedule and start from the beginning.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325project/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325project/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325project/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325project/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325project/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/csc325project/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/csc325project/schedule-builder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/csc325project/schedule-builder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/csc325project/schedule-builder.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +23,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="schedule_builder_branch" />
+        <entry key="$PROJECT_DIR$" value="schedule_builder_branch_testing" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -58,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;schedule__builder__branch__testing&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;schedule__builder__branch&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -99,6 +95,7 @@
       <workItem from="1711651343562" duration="3668000" />
       <workItem from="1711674508305" duration="5249000" />
       <workItem from="1711920606460" duration="9479000" />
+      <workItem from="1712079573579" duration="1852000" />
     </task>
     <task id="LOCAL-00001" summary="Current Schedule Builder GUI. More things are still being added soon.">
       <option name="closed" value="true" />
