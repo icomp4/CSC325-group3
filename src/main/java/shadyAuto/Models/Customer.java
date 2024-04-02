@@ -4,6 +4,7 @@ public class Customer {
     private String name;
     private String phoneNumber;
     private int customerID;
+    private int vehicleID;
 
     /*
         Constructors
@@ -12,7 +13,7 @@ public class Customer {
     public Customer(){
         name = "null";
     }
-    public Customer(String name, String phoneNumber, int customerID){
+    public Customer(String name, String phoneNumber, int customerID, int vehicleID){
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.customerID = customerID;
