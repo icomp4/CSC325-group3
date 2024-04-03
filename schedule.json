@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "name": "Jake",
+    "monday": "1-5",
+    "tuesday": "10-7",
+    "wednesday": "12-6",
+    "thursday": "",
+    "friday": "",
+    "saturday": "3-10",
+    "sunday": ""
+  }
+]

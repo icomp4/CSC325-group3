@@ -18,7 +18,7 @@
         <menus>
             <Menu mnemonicParsing="false" text="Menu">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#resetScheduleHandler" text="Clear Schedule" />
+                    <MenuItem mnemonicParsing="false" onAction="#resetScheduleHandler" text="Clear Table" />
                     <MenuItem mnemonicParsing="false" onAction="#deleteScheduleHandler" text="Delete Schedule" />
                 </items>
             </Menu>
