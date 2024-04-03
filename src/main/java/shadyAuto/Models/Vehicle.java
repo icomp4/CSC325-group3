@@ -21,7 +21,7 @@ public class Vehicle {
         this.make = make;
         this.model = model;
         this.year = year;
-        this.vehicleID = vehichleID;
+        this.vehicleID = vehicleID;
     }
 
     /*

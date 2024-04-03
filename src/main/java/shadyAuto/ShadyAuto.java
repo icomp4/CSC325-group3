@@ -18,8 +18,9 @@ public class ShadyAuto extends Application {
 
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
-        FXMLLoader fxmlLoader = new FXMLLoader(ShadyAuto.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        //update this line as much as you can
+        FXMLLoader fxmlLoader = new FXMLLoader(ShadyAuto.class.getResource("schedule-builder.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("shadyAuto");
         stage.setScene(scene);
         stage.show();
