@@ -10,6 +10,6 @@ public class ShadyController {
 
     @FXML
     protected void onHelloButtonClick() {
-       User.SignUp("testemail@gmail.com", "testusername", "testpassword");
+       User.Login("TestUser", "password");
     }
 }

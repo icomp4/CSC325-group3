@@ -1,12 +1,16 @@
-module org.example.demo1 {
+module org.shadyAuto {
     requires javafx.controls;
     requires javafx.fxml;
     requires firebase.admin;
     requires com.google.auth.oauth2;
     requires com.google.auth;
     requires google.cloud.firestore;
-
+    requires google.cloud.core;
     requires com.google.gson;
+    requires org.json;
+    requires java.net.http;
+    requires com.google.api.apicommon;
+    requires io.github.cdimascio.dotenv.java;
 
 
     exports shadyAuto;

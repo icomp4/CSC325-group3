@@ -1,4 +1,4 @@
-package shadyAuto;
+package shadyAuto.Models;
 
 import shadyAuto.Models.Parts;
 
