@@ -49,6 +49,7 @@ key.json
 *.tar.gz
 *.rar
 
+.env
 # OS-specific #
 .DS_Store
 Thumbs.db
