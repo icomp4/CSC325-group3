@@ -3,8 +3,7 @@ package shadyAuto.Models;
 public class Customer {
     private String name;
     private String phoneNumber;
-    private int customerID;
-    private int vehicleID;
+    private String customerID;
 
     /*
         Constructors
@@ -13,11 +12,10 @@ public class Customer {
     public Customer(){
         name = "null";
     }
-    public Customer(String name, String phoneNumber, int customerID, int vehicleID){
+    public Customer(String name, String phoneNumber, String customerID){
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.customerID = customerID;
-        this.vehicleID = vehicleID;
     }
 
     /*
@@ -31,7 +29,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
 /*
@@ -46,7 +44,12 @@ public class Customer {
         return phoneNumber;
     }
 
-    public int getCustomerID() {
+    public String getCustomerID() {
         return customerID;
+    }
+    public void Print(){
+        System.out.println("Name: " + name);
+        System.out.println("Phone Number: " + phoneNumber);
+        System.out.println("Customer ID: " + customerID);
     }
 }

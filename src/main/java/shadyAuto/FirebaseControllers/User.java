@@ -42,7 +42,6 @@ public class User {
         String url = STR."https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=\{API_KEY}";
         String email = getEmailByUsername(username);
         if (email == null) {
-            System.out.println("Login failed: Username does not exist.");
             return false;
         }
         Map<Object, Object> data = new HashMap<>();
@@ -65,10 +64,8 @@ public class User {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                System.out.println("Login successful");
                 return true;
             } else {
-                System.out.println("Login failed: " + response.body());
                 return false;
             }
         } catch (Exception e) {
@@ -91,5 +88,4 @@ public class User {
             return null;
         }
     }
-
 }
