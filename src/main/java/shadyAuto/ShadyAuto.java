@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shadyAuto.FirebaseControllers.CustomerController;
 
 import java.io.IOException;
 
@@ -13,25 +14,14 @@ public class ShadyAuto extends Application {
     public static Firestore fstore;
     public static FirebaseAuth fauth;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
-
-
-    //fields to grab Stage Windoes
-    private static Stage primaryStage;
-
-    public static Stage getPrimaryStage(){
-        return primaryStage;
-    }
     @Override
     public void start(Stage stage) throws IOException {
-        primaryStage = stage;
-        //Temporarily Variables soon to be deleted
-        String scheduleBuilder = "schedule-builder.fxml";
-        String employeeSchedule = "employee-schedule.fxml";
 
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
-        FXMLLoader fxmlLoader = new FXMLLoader(ShadyAuto.class.getResource(scheduleBuilder));
+
+        FXMLLoader fxmlLoader = new FXMLLoader(ShadyAuto.class.getResource("schedule-builder.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("shadyAuto");
         stage.setScene(scene);
