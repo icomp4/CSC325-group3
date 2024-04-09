@@ -1,12 +1,1 @@
-[
-  {
-    "name": "Jake",
-    "monday": "1-5",
-    "tuesday": "10-7",
-    "wednesday": "12-6",
-    "thursday": "",
-    "friday": "",
-    "saturday": "3-10",
-    "sunday": ""
-  }
-]
+[{"name":"Jake","monday":"4-11","tuesday":"","wednesday":"3-11","thursday":"","friday":"1-10","saturday":"9-5","sunday":"12-9"},{"name":"Sarah","monday":"3-10","tuesday":"12-5","wednesday":"5-11","thursday":"10-3","friday":"","saturday":"","sunday":"10-5"}]

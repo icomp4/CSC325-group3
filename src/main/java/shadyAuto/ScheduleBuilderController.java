@@ -5,12 +5,17 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import shadyAuto.ScheduleBuilder.Schedule;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -316,4 +321,52 @@ public class ScheduleBuilderController {
         saturdayTextField.clear();
         sundayTextField.clear();
     }
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                      Switching and Navigating Between Windows
+    //*****************************************************************************************************************
+    public void switchToEmployeeSchedule(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("employee-schedule.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = ShadyAuto.getPrimaryStage();
+
+            // Set the new scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public void switchToScheduleBuilder(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("schedule-builder.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = ShadyAuto.getPrimaryStage();
+
+            // Set the new scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 }
