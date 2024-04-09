@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shadyAuto.FirebaseControllers.CustomerController;
 
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class ShadyAuto extends Application {
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
 
-        FXMLLoader fxmlLoader = new FXMLLoader(ShadyAuto.class.getResource("TestDB.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ShadyAuto.class.getResource("schedule-builder.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("shadyAuto");
         stage.setScene(scene);

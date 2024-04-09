@@ -47,4 +47,9 @@ public class Customer {
     public String getCustomerID() {
         return customerID;
     }
+    public void Print(){
+        System.out.println("Name: " + name);
+        System.out.println("Phone Number: " + phoneNumber);
+        System.out.println("Customer ID: " + customerID);
+    }
 }
