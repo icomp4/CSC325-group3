@@ -21,7 +21,7 @@ buildNumber.properties
 !.idea/modules.xml
 !.idea/*.iml
 !.idea/codeStyles/
-key.jason
+key.json
 # Eclipse #
 /.classpath
 /.project
@@ -49,6 +49,7 @@ key.jason
 *.tar.gz
 *.rar
 
+.env
 # OS-specific #
 .DS_Store
 Thumbs.db
