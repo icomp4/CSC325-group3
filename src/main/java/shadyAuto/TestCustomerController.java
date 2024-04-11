@@ -32,7 +32,7 @@ public class TestCustomerController {
 
     @FXML
     void createVehicle(ActionEvent event) {
-       boolean created = vehicleController.Create("owner", "make", "model", 2021);
+       boolean created = vehicleController.Create("owner", "BNW", "m3", 2024);
          if (created) {
              System.out.println("Vehicle Created");
          } else {
