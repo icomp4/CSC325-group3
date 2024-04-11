@@ -3,47 +3,49 @@ package shadyAuto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import shadyAuto.FirebaseControllers.CustomerController;
+import shadyAuto.FirebaseControllers.VehicleController;
+import shadyAuto.Models.Vehicle;
 
 public class TestCustomerController {
-
-    @FXML
-    private TextField firstNameTXT;
-
-    @FXML
-    private TextField lastNameTXT;
+    VehicleController vehicleController = new VehicleController();
 
     @FXML
     private Label loginLabel;
 
     @FXML
-    private TextField phoneNumTXT;
-
-    @FXML
-    private TextField fullNameTXT;
-
-
-    @FXML
-    void CreateCustomer(ActionEvent event) {
-        String firstName = this.firstNameTXT.getText();
-        String lastName = this.lastNameTXT.getText();
-        String phoneNum = this.phoneNumTXT.getText();
-        if(firstName != "" && lastName != "" && phoneNum != "") {
-            boolean customer = CustomerController.Create(firstName, lastName, phoneNum);
-            if(customer) {
-                loginLabel.setText("Customer Created");
-                loginLabel.setTextFill(javafx.scene.paint.Color.GREEN);
-            } else {
-                loginLabel.setText("Customer Creation Failed");
-                loginLabel.setTextFill(javafx.scene.paint.Color.RED);
+    void FetchVehicle(ActionEvent event) {
+        Vehicle vehicle = vehicleController.GetByID("5173a9b2-666e-4855-8adc-e7012e824d75");
+        if (vehicle != null) {
+            System.out.println("Vehicle Found");
+        } else {
+            System.out.println("Vehicle not found");
+        }
+        Vehicle[] vehicles = vehicleController.GetByOwnerID("owner");
+        if (vehicles != null) {
+            for(Vehicle v : vehicles) {
+                System.out.printf("Owner: %s, Make: %s, Model: %s, Year: %d\n", v.getOwner(), v.getMake(), v.getModel(), v.getYear());
             }
+        } else {
+            System.out.println("Vehicles not found");
         }
     }
+
     @FXML
-    void FetchCustomer(ActionEvent event) {
-        String fullname = this.fullNameTXT.getText();
-        shadyAuto.Models.Customer customer = CustomerController.GetByName(fullname);
-        customer.Print();
+    void createVehicle(ActionEvent event) {
+       boolean created = vehicleController.Create("owner", "BNW", "m3", 2024);
+         if (created) {
+             System.out.println("Vehicle Created");
+         } else {
+             System.out.println("Vehicle not created");
+         }
+    }
+    @FXML
+    void deleteVehicle(ActionEvent event) {
+        boolean deleted = vehicleController.Delete("5173a9b2-666e-4855-8adc-e7012e824d75");
+        if (deleted) {
+            System.out.println("Vehicle Deleted");
+        } else {
+            System.out.println("Vehicle not deleted");
+        }
     }
 }

@@ -1,13 +1,11 @@
 package shadyAuto.Models;
 
-import shadyAuto.Models.Customer;
-
 public class Vehicle {
-    private Customer owner;
+    private String owner;
     private String make;
     private String model;
     private int year;
-    private int vehicleID;
+    private String vehicleID;
 
     /*
         Constructors
@@ -16,7 +14,7 @@ public class Vehicle {
 
     }
 
-    public Vehicle(Customer owner, String make, String model, int year, int vehicleID){
+    public Vehicle(String owner, String make, String model, int year, String vehicleID){
         this.owner = owner;
         this.make = make;
         this.model = model;
@@ -28,7 +26,7 @@ public class Vehicle {
         Setters
     */
 
-    public void setOwner(Customer owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
@@ -48,7 +46,7 @@ public class Vehicle {
         Getters
     */
 
-    public Customer getOwner() {
+    public String getOwner() {
         return owner;
     }
 
@@ -62,5 +60,9 @@ public class Vehicle {
 
     public int getYear() {
         return year;
+    }
+
+    public String getVehicleID() {
+        return vehicleID;
     }
 }
