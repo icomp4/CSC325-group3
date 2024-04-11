@@ -39,5 +39,13 @@ public class TestCustomerController {
              System.out.println("Vehicle not created");
          }
     }
-
+    @FXML
+    void deleteVehicle(ActionEvent event) {
+        boolean deleted = vehicleController.Delete("5173a9b2-666e-4855-8adc-e7012e824d75");
+        if (deleted) {
+            System.out.println("Vehicle Deleted");
+        } else {
+            System.out.println("Vehicle not deleted");
+        }
+    }
 }

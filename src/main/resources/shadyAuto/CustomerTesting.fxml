@@ -9,5 +9,6 @@
       <Button layoutX="454.0" layoutY="348.0" mnemonicParsing="false" onAction="#createVehicle" prefHeight="25.0" prefWidth="268.0" text="Create vehicle" />
       <Label fx:id="loginLabel" layoutX="599.0" layoutY="443.0" textAlignment="CENTER" />
       <Button layoutX="454.0" layoutY="381.0" mnemonicParsing="false" onAction="#FetchVehicle" prefHeight="25.0" prefWidth="268.0" text="Fetch vehicle" />
+      <Button layoutX="454.0" layoutY="418.0" mnemonicParsing="false" onAction="#deleteVehicle" prefHeight="25.0" prefWidth="268.0" text="Delete vehicle" />
    </children>
 </AnchorPane>
