@@ -3,11 +3,13 @@ package shadyAuto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import shadyAuto.FirebaseControllers.FirestoreDBConnection;
 import shadyAuto.FirebaseControllers.VehicleController;
 import shadyAuto.Models.Vehicle;
 
 public class TestCustomerController {
-    VehicleController vehicleController = new VehicleController();
+    FirestoreDBConnection db = new FirestoreDBConnection();
+    VehicleController vehicleController = new VehicleController(db);
 
     @FXML
     private Label loginLabel;

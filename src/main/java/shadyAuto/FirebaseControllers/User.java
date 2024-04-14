@@ -12,7 +12,10 @@ import java.util.Map;
 import com.google.api.core.ApiFuture;
 import io.github.cdimascio.dotenv.Dotenv;
 public class User {
-    FirestoreDBConnection db = new FirestoreDBConnection();
+    FirestoreDBConnection db;
+    public User(FirestoreDBConnection db) {
+        this.db = db;
+    }
 
     public static boolean SignUp(String email, String username, String password) {
         UserRecord.CreateRequest user = new UserRecord.CreateRequest().

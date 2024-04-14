@@ -17,7 +17,7 @@ public class ShadyAuto extends Application {
     public static FirebaseAuth fauth;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
 
-    //fields to grab Stage Windoes
+    //fields to grab Stage Windows
     private static Stage primaryStage;
 
     public static Stage getPrimaryStage(){
@@ -31,7 +31,7 @@ public class ShadyAuto extends Application {
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
 
-        scene = new Scene(loadFXML("CustomerTesting"));
+        scene = new Scene(loadFXML("schedule-builder"));
         stage.setTitle("shadyAuto");
         stage.setScene(scene);
         stage.show();

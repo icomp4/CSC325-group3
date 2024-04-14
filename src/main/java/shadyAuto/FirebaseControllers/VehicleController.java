@@ -9,10 +9,13 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
+
 public class VehicleController {
     // Top level database connection, so it can be reused by all functions
-    static FirestoreDBConnection db = new FirestoreDBConnection();
-
+    private final FirestoreDBConnection db;
+    public VehicleController(FirestoreDBConnection db) {
+        this.db = db;
+    }
     public boolean Create(String ownerID, String make, String model, int year) {
         UUID id = UUID.randomUUID();
         Vehicle newVehicle = new Vehicle(ownerID, make, model, year, id.toString());
@@ -80,3 +83,5 @@ public class VehicleController {
         return getVehicle(vehicleID);
     }
 }
+
+
