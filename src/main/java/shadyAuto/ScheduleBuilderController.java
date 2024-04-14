@@ -112,10 +112,16 @@ public class ScheduleBuilderController {
 
     }
 
+
+
+
+
+
+
+
     //*****************************************************************************************************************
     //                                      Method to add information to schedule
     //*****************************************************************************************************************
-
     public void addToScheduleButton(){
         ObservableList<Schedule> list = tableView.getItems();
 
@@ -142,6 +148,11 @@ public class ScheduleBuilderController {
 
 
 
+
+
+
+
+
     //*****************************************************************************************************************
     //                                          Method to clear table view
     //*****************************************************************************************************************
@@ -155,9 +166,9 @@ public class ScheduleBuilderController {
 
 
 
-    //********************************
-    //Method to Delete Schedule
-    //********************************
+
+
+
 
 
     //*****************************************************************************************************************
@@ -208,6 +219,7 @@ public class ScheduleBuilderController {
 
 
 
+
     //*****************************************************************************************************************
     //                                          Method to save schedule
     //*****************************************************************************************************************
@@ -249,8 +261,11 @@ public class ScheduleBuilderController {
 
 
 
+
+
+
     //*****************************************************************************************************************
-    //                                          Method to save schedule
+    //                                          Method to display schedule
     //*****************************************************************************************************************
     public void displayScheduleHandler(){
         ObservableList<Schedule> list = tableView.getItems();
@@ -308,11 +323,42 @@ public class ScheduleBuilderController {
     }
 
 
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                          Method to remove row from table view
+    //*****************************************************************************************************************
     public void removeSelectedRow(){
         Schedule selectedItem = tableView.getSelectionModel().getSelectedItem();
-        tableView.getItems().remove(selectedItem);
-        System.out.println("Removed Item: " + selectedItem.toString());
+
+        //If user chooses a row, it will get deleted. Otherwise, an alert window appears to select a row to delete
+        if(selectedItem != null){
+            tableView.getItems().remove(selectedItem);
+            scheduleCollection.remove(selectedItem);
+            System.out.println("Removed Row: " + selectedItem.toString());
+        }
+        else{
+
+            //*********************************************************
+            //Alert window that tells user to select a row to delete.
+            //*********************************************************
+            showAlert.setAlertType(Alert.AlertType.INFORMATION);
+            showAlert.setHeaderText("Select a Row to Remove");
+            showAlert.setContentText("Continue");
+            showAlert.show();
+        }
+
     }
+
+
+
+
+
+
 
 
     //*****************************************************************************************************************
@@ -328,6 +374,7 @@ public class ScheduleBuilderController {
         saturdayTextField.clear();
         sundayTextField.clear();
     }
+
 
 
 
@@ -357,6 +404,14 @@ public class ScheduleBuilderController {
     }
 
 
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                      Event Handler to temporarily switch and Navigating Between Windows
+    //*****************************************************************************************************************
     public void switchToScheduleBuilder(){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("schedule-builder.fxml"));
@@ -374,6 +429,14 @@ public class ScheduleBuilderController {
             e.printStackTrace();
         }
     }
+
+
+
+
+
+
+
+
 
 
 }
