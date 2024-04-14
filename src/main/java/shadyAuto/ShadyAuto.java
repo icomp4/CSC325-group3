@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import shadyAuto.FirebaseControllers.CustomerController;
+import shadyAuto.FirebaseControllers.FirestoreDBConnection;
 
 import java.io.IOException;
 
@@ -17,8 +18,9 @@ public class ShadyAuto extends Application {
     public static FirebaseAuth fauth;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
 
-    //fields to grab Stage Windoes
+    //fields to grab Stage Windows
     private static Stage primaryStage;
+    public static FirestoreDBConnection db = new FirestoreDBConnection();
 
     public static Stage getPrimaryStage(){
         return primaryStage;

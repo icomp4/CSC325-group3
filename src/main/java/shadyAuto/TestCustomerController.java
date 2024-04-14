@@ -6,8 +6,10 @@ import javafx.scene.control.Label;
 import shadyAuto.FirebaseControllers.VehicleController;
 import shadyAuto.Models.Vehicle;
 
+import static shadyAuto.ShadyAuto.db;
+
 public class TestCustomerController {
-    VehicleController vehicleController = new VehicleController();
+    VehicleController vehicleController = new VehicleController(db);
 
     @FXML
     private Label loginLabel;
@@ -41,7 +43,7 @@ public class TestCustomerController {
     }
     @FXML
     void deleteVehicle(ActionEvent event) {
-        boolean deleted = vehicleController.Delete("5173a9b2-666e-4855-8adc-e7012e824d75");
+        boolean deleted = vehicleController.Delete("da0123d0-adb4-488d-b7fc-78c2354c7d1b");
         if (deleted) {
             System.out.println("Vehicle Deleted");
         } else {

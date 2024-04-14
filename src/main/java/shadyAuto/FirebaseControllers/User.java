@@ -12,7 +12,10 @@ import java.util.Map;
 import com.google.api.core.ApiFuture;
 import io.github.cdimascio.dotenv.Dotenv;
 public class User {
-    FirestoreDBConnection db = new FirestoreDBConnection();
+    FirestoreDBConnection db;
+    public User(FirestoreDBConnection db) {
+        this.db = db;
+    }
 
     public static boolean SignUp(String email, String username, String password) {
         UserRecord.CreateRequest user = new UserRecord.CreateRequest().
@@ -39,7 +42,7 @@ public class User {
     public static boolean Login(String username, String password) {
         Dotenv dotenv = Dotenv.load();
         String API_KEY = dotenv.get("API_KEY");
-        String url = STR."https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=\{API_KEY}";
+        String url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + API_KEY;
         String email = getEmailByUsername(username);
         if (email == null) {
             return false;
