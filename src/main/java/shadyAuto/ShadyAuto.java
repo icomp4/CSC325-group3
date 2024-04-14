@@ -14,8 +14,16 @@ public class ShadyAuto extends Application {
     public static Firestore fstore;
     public static FirebaseAuth fauth;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
+
+    //fields to grab Stage Windoes
+    private static Stage primaryStage;
+
+    public static Stage getPrimaryStage(){
+        return primaryStage;
+    }
     @Override
     public void start(Stage stage) throws IOException {
+        primaryStage = stage;
 
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();

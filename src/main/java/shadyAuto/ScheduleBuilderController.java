@@ -308,6 +308,13 @@ public class ScheduleBuilderController {
     }
 
 
+    public void removeSelectedRow(){
+        Schedule selectedItem = tableView.getSelectionModel().getSelectedItem();
+        tableView.getItems().remove(selectedItem);
+        System.out.println("Removed Item: " + selectedItem.toString());
+    }
+
+
     //*****************************************************************************************************************
     //                         Method to clear TextFields once information is displayed on schedule
     //*****************************************************************************************************************
