@@ -46,7 +46,7 @@ public class CustomerController {
     }
     public boolean Create(String FirstName, String LastName, String Phone) {
         UUID id = UUID.randomUUID();
-        shadyAuto.Models.Customer newCustomer = new shadyAuto.Models.Customer(STR."\{FirstName} \{LastName}", Phone, id.toString());
+        shadyAuto.Models.Customer newCustomer = new shadyAuto.Models.Customer(FirstName + " "  + LastName, Phone, id.toString());
         HashMap<String, Object> data = new HashMap<>();
         data.put("name", newCustomer.getName());
         data.put("phoneNumber", newCustomer.getphoneNumber());

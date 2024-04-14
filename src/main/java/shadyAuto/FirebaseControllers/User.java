@@ -42,7 +42,7 @@ public class User {
     public static boolean Login(String username, String password) {
         Dotenv dotenv = Dotenv.load();
         String API_KEY = dotenv.get("API_KEY");
-        String url = STR."https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=\{API_KEY}";
+        String url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + API_KEY;
         String email = getEmailByUsername(username);
         if (email == null) {
             return false;
