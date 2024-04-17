@@ -43,7 +43,7 @@ public class TestCustomerController {
     }
     @FXML
     void deleteVehicle(ActionEvent event) {
-        boolean deleted = vehicleController.Delete("da0123d0-adb4-488d-b7fc-78c2354c7d1b");
+        boolean deleted = vehicleController.Delete("d30d6c3a-7ff6-4588-be0d-3ca768225f3d");
         if (deleted) {
             System.out.println("Vehicle Deleted");
         } else {
