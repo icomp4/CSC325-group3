@@ -11,6 +11,7 @@ module org.shadyAuto {
     requires java.net.http;
     requires com.google.api.apicommon;
     requires io.github.cdimascio.dotenv.java;
+    requires java.logging;
 
 
     exports shadyAuto;
