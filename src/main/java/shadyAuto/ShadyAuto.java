@@ -33,7 +33,7 @@ public class ShadyAuto extends Application {
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
 
-        scene = new Scene(loadFXML("CustomerTesting"));
+        scene = new Scene(loadFXML("LoginScreen"));
         stage.setTitle("shadyAuto");
         stage.setScene(scene);
         stage.show();

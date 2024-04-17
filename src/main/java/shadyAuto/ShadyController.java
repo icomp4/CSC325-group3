@@ -29,8 +29,9 @@ public class ShadyController implements Initializable {
     void Login(ActionEvent event) {
         String usernameTxt = this.usernameTxt.getText();
         String pwTxt = this.pwTxt.getText();
+        User user = new User(ShadyAuto.db);
         if(usernameTxt != "" && pwTxt != "") {
-            boolean login = User.Login(usernameTxt, pwTxt);
+            boolean login = user.Login(usernameTxt, pwTxt);
             if(login) {
                 errorLbl.setText("Login Successful");
                 errorLbl.setTextFill(javafx.scene.paint.Color.GREEN);
