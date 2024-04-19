@@ -9,17 +9,17 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
-import com.google.api.core.ApiFuture;
+
 import io.github.cdimascio.dotenv.Dotenv;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
-public class User {
+public class UserController {
     static FirestoreDBConnection db;
-    private static final Logger LOGGER = Logger.getLogger(User.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
-    public User(FirestoreDBConnection db) {
-        User.db = db;
+    public UserController(FirestoreDBConnection db) {
+        UserController.db = db;
     }
 
     public boolean SignUp(String email, String username, String password) {

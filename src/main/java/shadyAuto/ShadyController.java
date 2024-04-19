@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import shadyAuto.FirebaseControllers.User;
+import shadyAuto.FirebaseControllers.UserController;
 import javafx.fxml.Initializable;
 
 import java.io.IOException;
@@ -30,9 +30,9 @@ public class ShadyController implements Initializable {
     void Login(ActionEvent event) throws IOException {
         String usernameTxt = this.usernameTxt.getText();
         String pwTxt = this.pwTxt.getText();
-        User user = new User(ShadyAuto.db);
+        UserController userController = new UserController(ShadyAuto.db);
         if(usernameTxt != "" && pwTxt != "") {
-            boolean login = user.Login(usernameTxt, pwTxt);
+            boolean login = userController.Login(usernameTxt, pwTxt);
             if(login) {
                 shadyAuto.ShadyAuto.setRoot("MainScreen");
             } else {
