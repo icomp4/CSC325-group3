@@ -5,12 +5,17 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import shadyAuto.ScheduleBuilder.Schedule;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -107,6 +112,16 @@ public class ScheduleBuilderController {
 
     }
 
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                      Method to add information to schedule
+    //*****************************************************************************************************************
     public void addToScheduleButton(){
         ObservableList<Schedule> list = tableView.getItems();
 
@@ -129,12 +144,18 @@ public class ScheduleBuilderController {
         scheduleCollection.add(schedule);
 
         clearTextFields();
-
-
-
-
     }
 
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                          Method to clear table view
+    //*****************************************************************************************************************
     public void resetScheduleHandler(){
         ObservableList<Schedule> list = tableView.getItems();
 
@@ -144,14 +165,30 @@ public class ScheduleBuilderController {
     }
 
 
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                          Method to delete schedule
+    //*****************************************************************************************************************
     public void deleteScheduleHandler(){
         ObservableList<Schedule> list = tableView.getItems();
+
+
+        //********************************
+        //Creating Gson builder
+        //********************************
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-
-
-
         String jsonString = gson.toJson(new ArrayList<>());
+
+
+        //****************************************************
+        //Opening schedule.json file and deleting all contents
+        //****************************************************
         try {
             PrintStream ps = new PrintStream("schedule.json");
             ps.println(jsonString);
@@ -159,21 +196,48 @@ public class ScheduleBuilderController {
             throw new RuntimeException(e);
         }
 
+
+        //**************************************************************************************************************
+        //Clearing the TableView and all information in the scheduleCollection which helps to store data into json file
+        //**************************************************************************************************************
         list.clear();
         scheduleCollection.clear();
 
 
+        //****************************************************
+        //Gives alert window that shows the deletion occurred.
+        //****************************************************
         showAlert.setAlertType(Alert.AlertType.INFORMATION);
         showAlert.setHeaderText("Schedule Deleted");
-        showAlert.setContentText("Continue.");
+        showAlert.setContentText("Click Ok");
         showAlert.show();
     }
 
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                          Method to save schedule
+    //*****************************************************************************************************************
     public void saveScheduleHandler(){
+
+        //********************************
+        //Creating Gson builder
+        //********************************
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         String jsonString = gson.toJson(scheduleCollection);
 
+
+
+
+        //****************************************************************
+        //Opening schedule.json file and saving it to the file
+        //****************************************************************
         try {
             PrintStream ps = new PrintStream("schedule.json");
             ps.println(jsonString);
@@ -182,9 +246,13 @@ public class ScheduleBuilderController {
         }
 
 
+
+        //*********************************************************
+        //Alert window that tells user that the schedule was saved
+        //*********************************************************
         showAlert.setAlertType(Alert.AlertType.INFORMATION);
         showAlert.setHeaderText("Schedule Saved");
-        showAlert.setContentText("You can Exit now");
+        showAlert.setContentText("Click Ok.");
         showAlert.show();
 
     }
@@ -194,10 +262,18 @@ public class ScheduleBuilderController {
 
 
 
+
+
+    //*****************************************************************************************************************
+    //                                          Method to display schedule
+    //*****************************************************************************************************************
     public void displayScheduleHandler(){
         ObservableList<Schedule> list = tableView.getItems();
         list.clear();
 
+        //********************************
+        //Creating Gson builder
+        //********************************
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
@@ -205,7 +281,10 @@ public class ScheduleBuilderController {
 
         System.out.println("Current count in collection: " + scheduleCollection.size());
 
-        //Opening and reading schedule.json file
+
+        //********************************************************************************
+        //Opening schedule.json file and importing it to a Collection interface "importJson"
+        //********************************************************************************
         try{
             FileReader fr = new FileReader("schedule.json");
             importJson = gson.fromJson(fr, new TypeToken<ArrayList<Schedule>>(){}.getType());
@@ -216,6 +295,9 @@ public class ScheduleBuilderController {
 
 
 
+        //*****************************************
+        //Checking to see if schedule is empty or not
+        //*****************************************
 
         //if schedule.json file is null, schedule needs to be made.
         if(importJson.size() == 0){
@@ -232,8 +314,6 @@ public class ScheduleBuilderController {
 
                 list.addAll(scheduleCollection);
 
-
-
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -242,6 +322,48 @@ public class ScheduleBuilderController {
 
     }
 
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                          Method to remove row from table view
+    //*****************************************************************************************************************
+    public void removeSelectedRow(){
+        Schedule selectedItem = tableView.getSelectionModel().getSelectedItem();
+
+        //If user chooses a row, it will get deleted. Otherwise, an alert window appears to select a row to delete
+        if(selectedItem != null){
+            tableView.getItems().remove(selectedItem);
+            scheduleCollection.remove(selectedItem);
+            System.out.println("Removed Row: " + selectedItem.toString());
+        }
+        else{
+
+            //*********************************************************
+            //Alert window that tells user to select a row to delete.
+            //*********************************************************
+            showAlert.setAlertType(Alert.AlertType.INFORMATION);
+            showAlert.setHeaderText("Select a Row to Remove");
+            showAlert.setContentText("Continue");
+            showAlert.show();
+        }
+
+    }
+
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                         Method to clear TextFields once information is displayed on schedule
+    //*****************************************************************************************************************
     public void clearTextFields(){
         nameTextField.clear();
         mondayTextField.clear();
@@ -252,4 +374,69 @@ public class ScheduleBuilderController {
         saturdayTextField.clear();
         sundayTextField.clear();
     }
+
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                                      Switching and Navigating Between Windows
+    //*****************************************************************************************************************
+    public void switchToEmployeeSchedule(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("employee-schedule.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = ShadyAuto.getPrimaryStage();
+
+            // Set the new scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+    //*****************************************************************************************************************
+    //                      Event Handler to temporarily switch and Navigating Between Windows
+    //*****************************************************************************************************************
+    public void switchToScheduleBuilder(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("schedule-builder.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = ShadyAuto.getPrimaryStage();
+
+            // Set the new scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }

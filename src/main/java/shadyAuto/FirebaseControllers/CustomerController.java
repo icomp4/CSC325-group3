@@ -18,13 +18,16 @@ import java.util.UUID;
  */
 public class CustomerController {
     // Top level database connection, so it can be reused by all functions
-    static FirestoreDBConnection db = new FirestoreDBConnection();
+    private final FirestoreDBConnection db;
+    public CustomerController(FirestoreDBConnection db) {
+        this.db = db;
+    }
 
     /*
         This function is a private helper method, it accepts a customerID, or a name and returns the customer details
         It is useful to negate rewriting the same code in multiple functions
      */
-    private static Customer getCustomer(String customerDetails) {
+    private Customer getCustomer(String customerDetails) {
         try {
             ApiFuture<DocumentSnapshot> result = db.initialize().collection("Customers").document(customerDetails).get();
             DocumentSnapshot document = result.get();
@@ -41,9 +44,9 @@ public class CustomerController {
             return null;
         }
     }
-    public static boolean Create(String FirstName, String LastName, String Phone) {
+    public boolean Create(String FirstName, String LastName, String Phone) {
         UUID id = UUID.randomUUID();
-        shadyAuto.Models.Customer newCustomer = new shadyAuto.Models.Customer(STR."\{FirstName} \{LastName}", Phone, id.toString());
+        shadyAuto.Models.Customer newCustomer = new shadyAuto.Models.Customer(FirstName + " "  + LastName, Phone, id.toString());
         HashMap<String, Object> data = new HashMap<>();
         data.put("name", newCustomer.getName());
         data.put("phoneNumber", newCustomer.getphoneNumber());
@@ -55,10 +58,10 @@ public class CustomerController {
             return false;
         }
     }
-    public static shadyAuto.Models.Customer GetByID(String customerID) {
+    public shadyAuto.Models.Customer GetByID(String customerID) {
         return getCustomer(customerID);
     }
-    public static shadyAuto.Models.Customer GetByName(String name) {
+    public shadyAuto.Models.Customer GetByName(String name) {
         try{
             ApiFuture<QuerySnapshot> query = db.initialize().collection("Customers").whereEqualTo("name", name).get();
             QuerySnapshot querySnapshot = query.get();
@@ -75,7 +78,7 @@ public class CustomerController {
             return null;
         }
     }
-    public static boolean Delete(String customerID) {
+    public boolean Delete(String customerID) {
         try {
             DocumentReference docRef = db.initialize().collection("Customers").document(customerID);
             docRef.delete();

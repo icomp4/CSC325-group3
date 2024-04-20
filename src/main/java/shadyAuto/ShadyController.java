@@ -5,9 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import shadyAuto.FirebaseControllers.User;
+import shadyAuto.FirebaseControllers.UserController;
 import javafx.fxml.Initializable;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,14 +27,14 @@ public class ShadyController implements Initializable {
     private TextField usernameTxt;
 
     @FXML
-    void Login(ActionEvent event) {
+    void Login(ActionEvent event) throws IOException {
         String usernameTxt = this.usernameTxt.getText();
         String pwTxt = this.pwTxt.getText();
+        UserController userController = new UserController(ShadyAuto.db);
         if(usernameTxt != "" && pwTxt != "") {
-            boolean login = User.Login(usernameTxt, pwTxt);
+            boolean login = userController.Login(usernameTxt, pwTxt);
             if(login) {
-                errorLbl.setText("Login Successful");
-                errorLbl.setTextFill(javafx.scene.paint.Color.GREEN);
+                shadyAuto.ShadyAuto.setRoot("MainScreen");
             } else {
                 errorLbl.setText("Login Failed");
                 errorLbl.setTextFill(javafx.scene.paint.Color.RED);

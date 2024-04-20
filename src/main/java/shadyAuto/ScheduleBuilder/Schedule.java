@@ -97,5 +97,19 @@ public class Schedule {
     public void setSunday(String sunday) {
         this.sunday = sunday;
     }
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "name='" + name + '\'' +
+                ", monday='" + monday + '\'' +
+                ", tuesday='" + tuesday + '\'' +
+                ", wednesday='" + wednesday + '\'' +
+                ", thursday='" + thursday + '\'' +
+                ", friday='" + friday + '\'' +
+                ", saturday='" + saturday + '\'' +
+                ", sunday='" + sunday + '\'' +
+                '}';
+    }
 }
 
