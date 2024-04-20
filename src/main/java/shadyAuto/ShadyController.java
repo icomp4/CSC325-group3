@@ -35,6 +35,7 @@ public class ShadyController implements Initializable {
             boolean login = userController.Login(usernameTxt, pwTxt);
             if(login) {
                 shadyAuto.ShadyAuto.setRoot("MainScreen");
+              shadyAuto.ShadyAuto.getPrimaryStage().setMaximized(true);
             } else {
                 errorLbl.setText("Login Failed");
                 errorLbl.setTextFill(javafx.scene.paint.Color.RED);
