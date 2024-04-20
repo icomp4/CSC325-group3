@@ -9,23 +9,23 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #374c61;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.MainScreen">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.MainScreen">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#949494" height="120.0" layoutX="80.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="400.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#949494" height="120.0" layoutX="540.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="400.0" />
-        <Button layoutX="105.0" layoutY="260.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="119.0" style="-fx-background-color: black;" text="Customer Accont's" textFill="#bcbcbc" />
+        <Button layoutX="105.0" layoutY="260.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="134.0" style="-fx-background-color: black;" text="Customer Account's" textFill="#bcbcbc" />
         <TextField layoutX="294.0" layoutY="326.0" prefHeight="31.0" prefWidth="177.0" promptText="Search" />
         <Button layoutX="307.0" layoutY="261.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="+ Add Contact" />
         <Button layoutX="563.0" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="Add Car" />
         <TextField layoutX="700.0" layoutY="300.0" prefHeight="40.0" prefWidth="200.0" promptText=" Search Vehicles License Plate" />
         <ListView accessibleRole="CHECK_MENU_ITEM" layoutX="1040.0" layoutY="430.0" prefHeight="395.0" prefWidth="863.0" />
-        <Button layoutX="1678.0" layoutY="16.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 30;" text="Account" />
+        <Button layoutX="1674.0" layoutY="7.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 30;" text="Account" />
         <Button layoutX="1771.0" layoutY="12.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" style="-fx-background-radius: 6;" text="Sign Out" />
-        <Button layoutX="113.0" layoutY="85.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="219.0" style="-fx-background-color: dark blue;" text="Vehical Invintory ">
+        <Button layoutX="113.0" layoutY="85.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="219.0" text="Vehicle Inventory">
          <font>
             <Font size="22.0" />
          </font></Button>
-        <Button layoutX="379.0" layoutY="85.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="238.0" style="-fx-background-color: dark blue;" text="Customer History ">
+        <Button layoutX="379.0" layoutY="85.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="238.0" text="Customer History ">
          <font>
             <Font size="22.0" />
          </font></Button>
