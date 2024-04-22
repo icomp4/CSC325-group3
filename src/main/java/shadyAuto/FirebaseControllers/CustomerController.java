@@ -33,7 +33,8 @@ public class CustomerController {
             DocumentSnapshot document = result.get();
             if (document.exists()) {
                 return new Customer(
-                        document.getString("name"),
+                        document.getString("firstName"),
+                        document.getString("lastName"),
                         document.getString("phoneNumber"),
                         document.getString("customerID")
                 );
@@ -44,32 +45,36 @@ public class CustomerController {
             return null;
         }
     }
-    public boolean Create(String FirstName, String LastName, String Phone) {
-        UUID id = UUID.randomUUID();
-        shadyAuto.Models.Customer newCustomer = new shadyAuto.Models.Customer(FirstName + " "  + LastName, Phone, id.toString());
-        HashMap<String, Object> data = new HashMap<>();
-        data.put("name", newCustomer.getName());
-        data.put("phoneNumber", newCustomer.getphoneNumber());
-        data.put("customerID", newCustomer.getCustomerID());
-        try {
-            db.initialize().collection("Customers").document(id.toString()).set(data);
-            return true;
-        } catch (Exception e) {
-            return false;
+    public boolean Create(Customer newCustomer) {
+        {
+            UUID id = UUID.randomUUID();
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("firstname", newCustomer.getFirstName());
+            data.put("lastname", newCustomer.getLastName());
+            data.put("phoneNumber", newCustomer.getPhoneNumber());
+            data.put("customerID", newCustomer.getCustomerID());
+            try {
+                db.initialize().collection("Customers").document(id.toString()).set(data);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
         }
     }
-    public shadyAuto.Models.Customer GetByID(String customerID) {
+
+    public Customer GetByID(String customerID) {
         return getCustomer(customerID);
     }
-    public shadyAuto.Models.Customer GetByName(String name) {
+    public shadyAuto.Models.Customer GetByName(String firsName, String lastName) {
         try{
-            ApiFuture<QuerySnapshot> query = db.initialize().collection("Customers").whereEqualTo("name", name).get();
+            ApiFuture<QuerySnapshot> query = db.initialize().collection("Customers").whereEqualTo("firstname", firsName).whereEqualTo("lastname", lastName).get();
             QuerySnapshot querySnapshot = query.get();
             if(querySnapshot.isEmpty()){
                 return null;
             } else {
                 return new shadyAuto.Models.Customer(
-                        querySnapshot.getDocuments().getFirst().getString("name"),
+                        querySnapshot.getDocuments().getFirst().getString("firstName"),
+                        querySnapshot.getDocuments().getFirst().getString("lastName"),
                         querySnapshot.getDocuments().getFirst().getString("phoneNumber"),
                         querySnapshot.getDocuments().getFirst().getString("customerID")
                 );

@@ -1,11 +1,12 @@
 package shadyAuto.Models;
 
-import shadyAuto.Models.Parts;
-
 import java.util.ArrayList;
+import java.util.UUID;
 
-public class History {
-    private int vehicleID;
+public class Invoice {
+    private String invoiceID;
+    private String vehicleID;
+    private String customerID;
     private ArrayList<Parts> partsOrder;
     private double price;
     private String date;
@@ -13,13 +14,19 @@ public class History {
     /*
         Constructors
      */
-    public History(){
+    public Invoice(){
 
     }
 
-    public History(int vehicleID, ArrayList<Parts> partsOrder, double price, String date){
+    public Invoice(String invoiceID, String vehicleID, String customerID, ArrayList<Parts> partsOrder, double price, String date){
+        this.invoiceID = invoiceID;
         this.vehicleID = vehicleID;
+        this.customerID = customerID;
         this.partsOrder = partsOrder;
+        price = 0;
+        for(Parts part : partsOrder){
+            price += part.getPrice();
+        }
         this.price = price;
         this.date = date;
     }
@@ -27,7 +34,7 @@ public class History {
         Setters
      */
 
-    public void setVehicleID(int vehicleID) {
+    public void setVehicleID(String vehicleID) {
         this.vehicleID = vehicleID;
     }
 
@@ -46,7 +53,7 @@ public class History {
         Getters
      */
 
-    public int getVehicleID() {
+    public String getVehicleID() {
         return vehicleID;
     }
 
@@ -61,4 +68,11 @@ public class History {
     public String getDate() {
         return date;
     }
+    public String getCustomerID() {
+        return customerID;
+    }
+    public String getInvoiceID() {
+        return invoiceID;
+    }
+
 }

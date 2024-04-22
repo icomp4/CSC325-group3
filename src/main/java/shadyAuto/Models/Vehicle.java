@@ -6,6 +6,7 @@ public class Vehicle {
     private String model;
     private int year;
     private String vehicleID;
+    private String licensePlate;
 
     /*
         Constructors
@@ -14,12 +15,13 @@ public class Vehicle {
 
     }
 
-    public Vehicle(String owner, String make, String model, int year, String vehicleID){
+    public Vehicle(String owner, String make, String model, int year, String vehicleID, String licensePlate) {
         this.owner = owner;
         this.make = make;
         this.model = model;
         this.year = year;
         this.vehicleID = vehicleID;
+        this.licensePlate = licensePlate;
     }
 
     /*
@@ -41,13 +43,18 @@ public class Vehicle {
     public void setYear(int year) {
         this.year = year;
     }
-
+    public void setLicensePlate(String licensePlate){
+        this.licensePlate = licensePlate;
+    }
     /*
         Getters
     */
 
     public String getOwner() {
         return owner;
+    }
+    public String getLicensePlate(){
+        return this.licensePlate;
     }
 
     public String getMake() {

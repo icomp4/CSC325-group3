@@ -34,7 +34,6 @@ public class ScheduleController {
             schedule.put("saturday", days[5]);
             schedule.put("sunday", days[6]);
             db.initialize().collection("schedules").document(name).set(schedule);
-            LOGGER.info("Successfully created new schedule: " + name);
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during CreateSchedule", e);
@@ -50,7 +49,6 @@ public class ScheduleController {
     public boolean DeleteSchedule(String name){
         try {
             db.initialize().collection("schedules").document(name).delete();
-            LOGGER.info("Successfully deleted schedule: " + name);
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during DeleteSchedule", e);
@@ -76,7 +74,6 @@ public class ScheduleController {
             schedule.put("saturday", days[5]);
             schedule.put("sunday", days[6]);
             db.initialize().collection("schedules").document(name).set(schedule);
-            LOGGER.info("Successfully updated schedule: " + name);
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during UpdateSchedule", e);

@@ -35,7 +35,6 @@ public class UserController {
             Map<String, Object> usernameMapping = new HashMap<>();
             usernameMapping.put("email", email);
             db.initialize().collection("usernameMappings").document(username).set(usernameMapping);
-            LOGGER.info("Successfully created new user: " + userRecord.getUid());
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during SignUp", e);
@@ -72,7 +71,6 @@ public class UserController {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                System.out.println("Login successful for user: " + username);
                 return true;
             } else {
                 LOGGER.warning("Login failed for username: " + username);
