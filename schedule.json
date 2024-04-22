@@ -1,1 +1,22 @@
-[{"name":"Mark","monday":"1-10","tuesday":"3-10","wednesday":"","thursday":"12-5","friday":"","saturday":"12-9","sunday":"11-8"},{"name":"Dan","monday":"10-3","tuesday":"10-3","wednesday":"11-7","thursday":"","friday":"9-5","saturday":"","sunday":"9-5"},{"name":"Zoey","monday":"9-5","tuesday":"11-8","wednesday":"10-3","thursday":"","friday":"9-5","saturday":"12-5","sunday":""},{"name":"John","monday":"","tuesday":"","wednesday":"11-4","thursday":"10-7","friday":"4-10","saturday":"12-9","sunday":"11-8"}]
+[
+  {
+    "name": "John",
+    "monday": "8-5",
+    "tuesday": "8-5",
+    "wednesday": "8-5",
+    "thursday": "",
+    "friday": "",
+    "saturday": "8-5",
+    "sunday": ""
+  },
+  {
+    "name": "CJ",
+    "monday": "9-6",
+    "tuesday": "",
+    "wednesday": "",
+    "thursday": "9-5",
+    "friday": "",
+    "saturday": "",
+    "sunday": ""
+  }
+]
