@@ -3,23 +3,20 @@ package shadyAuto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import shadyAuto.FirebaseControllers.ScheduleController;
 import shadyAuto.FirebaseControllers.VehicleController;
 import shadyAuto.Models.Vehicle;
 
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class TestSchedule {
-    VehicleController vehicleController = new VehicleController(ShadyAuto.db);
+    VehicleController vehicleController = new VehicleController(LoginController.db);
 
     @FXML
     private Label loginLabel;
 
     @FXML
     void createSchedule(ActionEvent event) {
-        VehicleController vehicleController = new VehicleController(ShadyAuto.db);
+        VehicleController vehicleController = new VehicleController(LoginController.db);
         String ownerID = String.valueOf(UUID.randomUUID());
         String vehicleID = String.valueOf(UUID.randomUUID());
         Vehicle vehicle = new Vehicle(ownerID, "BMW", "M4", 2024, vehicleID, "123ABC");

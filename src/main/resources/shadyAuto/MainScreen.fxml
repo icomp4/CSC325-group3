@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="712.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="712.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.MainController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -37,7 +37,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="schedule">
+                                <Button onAction="#OpenSchedule" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="schedule">
                                     <graphic>
                                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

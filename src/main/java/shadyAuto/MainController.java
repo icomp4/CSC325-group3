@@ -12,7 +12,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class MainController implements Initializable {
 
     @FXML
     private ImageView Exit;
@@ -64,5 +64,13 @@ public class Controller implements Initializable {
                 MenuClose.setVisible(false);
             });
         });
+    }
+    @FXML
+    void OpenSchedule(ActionEvent event) {
+        try {
+            LoginController.setRoot("Schedule-builder");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
