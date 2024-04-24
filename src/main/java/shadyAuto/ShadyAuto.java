@@ -34,7 +34,7 @@ public class ShadyAuto extends Application {
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
 
-        scene = new Scene(loadFXML("ScheduleTest"));
+        scene = new Scene(loadFXML("MainScreen"));
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
         stage.setScene(scene);
