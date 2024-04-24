@@ -1,55 +1,110 @@
 package shadyAuto;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import shadyAuto.FirebaseControllers.VehicleController;
-import shadyAuto.Models.Vehicle;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import shadyAuto.FirebaseControllers.ScheduleController;
+import shadyAuto.ScheduleBuilder.Schedule;
 
-import java.util.UUID;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class TestSchedule {
-    VehicleController vehicleController = new VehicleController(ShadyAuto.db);
+/**
+ * This class is obsolete and will be deleted soon
+ */
+
+public class TestSchedule extends ScheduleBuilderController {
+    ScheduleController scheduleController = new ScheduleController(ShadyAuto.db);
+
 
     @FXML
     private Label loginLabel;
 
+
+
     @FXML
-    void createSchedule(ActionEvent event) {
-        VehicleController vehicleController = new VehicleController(ShadyAuto.db);
-        String ownerID = String.valueOf(UUID.randomUUID());
-        String vehicleID = String.valueOf(UUID.randomUUID());
-        Vehicle vehicle = new Vehicle(ownerID, "BMW", "M4", 2024, vehicleID, "123ABC");
-        boolean created = vehicleController.Create(vehicle);
-        if (created) {
-            System.out.println("Vehicle created");
+    public void createSchedule(Schedule schedule) {
+        //default
+//        String name = "TestSchedule";
+//        String[] days = {"2-9", "", "1-8", "2-9", "2-9", "", ""};
+
+        //New version
+        String name = schedule.getName();
+        String[] days = {schedule.getMonday(), schedule.getTuesday(), schedule.getWednesday(),
+        schedule.getThursday(), schedule.getFriday(), schedule.getSaturday(), schedule.getSunday()};
+
+
+        boolean created = scheduleController.CreateSchedule(name, days);
+        if(created){
+            System.out.println("Successfully created new schedule: " + name);
         } else {
-            System.out.println("Vehicle not created");
+            System.out.println("Error during CreateSchedule");
         }
     }
 
     @FXML
     void deleteSchedule(ActionEvent event) {
-        boolean deleted = vehicleController.DeleteByLicense("123ABC");
-        if (deleted) {
-            System.out.println("Vehicle deleted");
+        String name = "TestSchedule";
+        boolean deleted = scheduleController.DeleteSchedule(name);
+        if(deleted){
+            System.out.println("Successfully deleted schedule: " + name);
         } else {
-            System.out.println("Vehicle not deleted");
+            System.out.println("Error during DeleteSchedule");
         }
     }
 
     @FXML
     void getSchedule(ActionEvent event) {
-        Vehicle bmw = vehicleController.GetByLicense("123ABC");
-        System.out.printf("Owner: %s\nMake: %s\nModel: %s\nYear: %d\nVehicle ID: %s\nLicense Plate: %s\n",
-                bmw.getOwner(), bmw.getMake(), bmw.getModel(), bmw.getYear(), bmw.getVehicleID(), bmw.getLicensePlate());
+        String name = "TestSchedule";
+        Map<String, String> schedule = scheduleController.GetSchedule(name);
+        if(schedule != null){
+            System.out.println("Successfully retrieved schedule: " + name);
+            for (Map.Entry<String, String> entry : schedule.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        } else {
+            System.out.println("Error during GetSchedule");
+        }
     }
+
+
     @FXML
-    void getAll(ActionEvent event) {
+    public void getAll() {
+        Collection<Schedule> schedules = scheduleController.GetAllSchedules();
+        if (schedules != null) {
+            System.out.println("Successfully retrieved all schedules");
+            //displayScheduleMethod(schedules);  // Assuming displayScheduleMethod updates the tableView
+//            addSchedulesToTable(schedules);
+            for (Schedule schedule : schedules) {
+                System.out.println("Schedule loaded: " + schedule);
+//                list.add(schedule);
+            }
+        } else {
+            System.out.println("Error during GetAllSchedules");
+        }
     }
+
+
 
     @FXML
     void updateSchedule(ActionEvent event) {
+        String name = "TestSchedule";
+        String[] days = {"", "", "", "", "", "", ""};
+        boolean updated = scheduleController.UpdateSchedule(name, days);
+        if(updated){
+            System.out.println("Successfully updated schedule: " + name);
+        } else {
+            System.out.println("Error during UpdateSchedule");
+        }
     }
 
 }
