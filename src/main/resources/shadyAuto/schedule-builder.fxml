@@ -18,7 +18,7 @@
         <menus>
             <Menu mnemonicParsing="false" text="Menu">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#resetScheduleHandler" text="Clear Table" />
+                    <MenuItem mnemonicParsing="false" onAction="#clearScheduleTableHandler" text="Clear Table" />
                     <MenuItem mnemonicParsing="false" onAction="#deleteScheduleHandler" text="Delete Schedule" />
                <MenuItem mnemonicParsing="false" onAction="#switchToEmployeeSchedule" text="Switch To Employee Schedule" />
                 </items>
@@ -69,7 +69,6 @@
     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
         <children>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#addToScheduleButton" text="Add to Schedule" />
-            <Button mnemonicParsing="false" onAction="#saveScheduleHandler" text="Save Schedule" />
             <Button mnemonicParsing="false" onAction="#displayScheduleHandler" text="Display Schedule" />
          <Button mnemonicParsing="false" onAction="#removeSelectedRow" text="Remove Selected Row" />
         </children>

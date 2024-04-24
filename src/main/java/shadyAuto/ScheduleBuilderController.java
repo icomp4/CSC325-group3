@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,16 +12,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import shadyAuto.FirebaseControllers.ScheduleController;
 import shadyAuto.ScheduleBuilder.Schedule;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 public class ScheduleBuilderController {
+    ScheduleController scheduleController = new ScheduleController(ShadyAuto.db);
+
     //********************************
     //TextFields Fx:id
     //********************************
@@ -101,6 +104,7 @@ public class ScheduleBuilderController {
 
 
     public void initialize(){
+        System.out.println("Initialize in ScheduleBuilderController called");
         tableColumnName.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Name"));
         tableColumnMonday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Monday"));
         tableColumnTuesday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Tuesday"));
@@ -111,6 +115,8 @@ public class ScheduleBuilderController {
         tableColumnSunday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Sunday"));
 
     }
+
+
 
 
 
@@ -140,8 +146,12 @@ public class ScheduleBuilderController {
         Schedule schedule = new Schedule(getNameTextField, getMondayTextField, getTuesdayTextField, getWednesdayTextField,
                 getThursdayTextField, getFridayTextField, getSaturdayTextField, getSundayTextField);
 
+
+        //Adding schedule data to table view
         list.add(schedule);
-        scheduleCollection.add(schedule);
+
+        //Adding schedule data to firebase
+        createSchedule(schedule);
 
         clearTextFields();
     }
@@ -156,7 +166,7 @@ public class ScheduleBuilderController {
     //*****************************************************************************************************************
     //                                          Method to clear table view
     //*****************************************************************************************************************
-    public void resetScheduleHandler(){
+    public void clearScheduleTableHandler(){
         ObservableList<Schedule> list = tableView.getItems();
 
         list.clear();
@@ -181,35 +191,21 @@ public class ScheduleBuilderController {
         //********************************
         //Creating Gson builder
         //********************************
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        String jsonString = gson.toJson(new ArrayList<>());
 
-
-        //****************************************************
-        //Opening schedule.json file and deleting all contents
-        //****************************************************
-        try {
-            PrintStream ps = new PrintStream("schedule.json");
-            ps.println(jsonString);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
 
 
         //**************************************************************************************************************
-        //Clearing the TableView and all information in the scheduleCollection which helps to store data into json file
+        //Clearing the TableView and all information in the firebase
         //**************************************************************************************************************
         list.clear();
-        scheduleCollection.clear();
-
+        deleteSchedule();
 
         //****************************************************
         //Gives alert window that shows the deletion occurred.
         //****************************************************
         showAlert.setAlertType(Alert.AlertType.INFORMATION);
         showAlert.setHeaderText("Schedule Deleted");
-        showAlert.setContentText("Click Ok");
+        showAlert.setContentText("Continue");
         showAlert.show();
     }
 
@@ -220,42 +216,7 @@ public class ScheduleBuilderController {
 
 
 
-    //*****************************************************************************************************************
-    //                                          Method to save schedule
-    //*****************************************************************************************************************
-    public void saveScheduleHandler(){
 
-        //********************************
-        //Creating Gson builder
-        //********************************
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        String jsonString = gson.toJson(scheduleCollection);
-
-
-
-
-        //****************************************************************
-        //Opening schedule.json file and saving it to the file
-        //****************************************************************
-        try {
-            PrintStream ps = new PrintStream("schedule.json");
-            ps.println(jsonString);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-
-
-        //*********************************************************
-        //Alert window that tells user that the schedule was saved
-        //*********************************************************
-        showAlert.setAlertType(Alert.AlertType.INFORMATION);
-        showAlert.setHeaderText("Schedule Saved");
-        showAlert.setContentText("Click Ok.");
-        showAlert.show();
-
-    }
 
 
 
@@ -268,59 +229,12 @@ public class ScheduleBuilderController {
     //                                          Method to display schedule
     //*****************************************************************************************************************
     public void displayScheduleHandler(){
-        ObservableList<Schedule> list = tableView.getItems();
-        list.clear();
-
-        //********************************
-        //Creating Gson builder
-        //********************************
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-
-
-
-        System.out.println("Current count in collection: " + scheduleCollection.size());
-
-
-        //********************************************************************************
-        //Opening schedule.json file and importing it to a Collection interface "importJson"
-        //********************************************************************************
-        try{
-            FileReader fr = new FileReader("schedule.json");
-            importJson = gson.fromJson(fr, new TypeToken<ArrayList<Schedule>>(){}.getType());
-        }
-        catch (Exception e){
-            System.out.println("Error Occurred");
-        }
-
-
-
-        //*****************************************
-        //Checking to see if schedule is empty or not
-        //*****************************************
-
-        //if schedule.json file is null, schedule needs to be made.
-        if(importJson.size() == 0){
-            showAlert.setAlertType(Alert.AlertType.INFORMATION);
-            showAlert.setHeaderText("Schedule is Empty");
-            showAlert.setContentText("Create your schedule.");
-            showAlert.show();
-        }
-        else{
-            try {
-                //If schedule is not empty, the schedule made beforehand will be displayed.
-                scheduleCollection.clear();
-                scheduleCollection.addAll(importJson);
-
-                list.addAll(scheduleCollection);
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-
+        getAll();
     }
+
+
+
+
 
 
 
@@ -340,6 +254,8 @@ public class ScheduleBuilderController {
             tableView.getItems().remove(selectedItem);
             scheduleCollection.remove(selectedItem);
             System.out.println("Removed Row: " + selectedItem.toString());
+
+            deleteSelectedSchedule(selectedItem);
         }
         else{
 
@@ -432,6 +348,115 @@ public class ScheduleBuilderController {
 
 
 
+
+
+
+
+
+
+
+
+    /**
+     * New FireBase Methods added
+     */
+
+    @FXML
+    public void createSchedule(Schedule schedule) {
+        //default
+//        String name = "TestSchedule";
+//        String[] days = {"2-9", "", "1-8", "2-9", "2-9", "", ""};
+
+        //New version
+        String name = schedule.getName();
+        String[] days = {schedule.getMonday(), schedule.getTuesday(), schedule.getWednesday(),
+                schedule.getThursday(), schedule.getFriday(), schedule.getSaturday(), schedule.getSunday()};
+
+
+        boolean created = scheduleController.CreateSchedule(name, days);
+        if(created){
+            System.out.println("Successfully created new schedule: " + name);
+        } else {
+            System.out.println("Error during CreateSchedule");
+        }
+    }
+
+    @FXML
+    void deleteSelectedSchedule(Schedule selectedItem) {
+//        String name = "TestSchedule";
+        String name = selectedItem.getName();
+        boolean deleted = scheduleController.DeleteSelectedSchedule(name);
+        if(deleted){
+            System.out.println("Successfully deleted schedule: " + name);
+        } else {
+            System.out.println("Error during DeleteSchedule");
+        }
+    }
+
+    @FXML
+    void deleteSchedule() {
+//        String name = "TestSchedule";
+        Collection<Schedule> schedules = scheduleController.GetAllSchedules();
+        for(Schedule schedule: schedules){
+            String name = schedule.getName();
+            boolean deleted = scheduleController.DeleteSchedule(name);
+            if(deleted){
+                System.out.println("Successfully deleted schedule: " + name);
+            } else {
+                System.out.println("Error during DeleteSchedule");
+            }
+        }
+
+    }
+
+    @FXML
+    void getSchedule(ActionEvent event) {
+        String name = "TestSchedule";
+        Map<String, String> schedule = scheduleController.GetSchedule(name);
+        if(schedule != null){
+            System.out.println("Successfully retrieved schedule: " + name);
+            for (Map.Entry<String, String> entry : schedule.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        } else {
+            System.out.println("Error during GetSchedule");
+        }
+    }
+
+
+    @FXML
+    public void getAll() {
+        ObservableList<Schedule> list = tableView.getItems();
+        list.clear();
+        Collection<Schedule> schedules = scheduleController.GetAllSchedules();
+        if (schedules != null) {
+            System.out.println("Successfully retrieved all schedules");
+            for (Schedule schedule : schedules) {
+//                System.out.println("Schedule loaded: " + schedule);
+                list.add(schedule);
+            }
+        } else {
+            System.out.println("Error during GetAllSchedules");
+        }
+    }
+
+
+
+    @FXML
+    void updateSchedule(ActionEvent event) {
+        String name = "TestSchedule";
+        String[] days = {"", "", "", "", "", "", ""};
+
+//        String name = selectedItem.getName();
+//        String[] days = {selectedItem.getMonday(), selectedItem.getTuesday(), selectedItem.getWednesday(),
+//        selectedItem.getThursday(), selectedItem.getFriday(), selectedItem.getSaturday(), selectedItem.getSunday()};
+
+        boolean updated = scheduleController.UpdateSchedule(name, days);
+        if(updated){
+            System.out.println("Successfully updated schedule: " + name);
+        } else {
+            System.out.println("Error during UpdateSchedule");
+        }
+    }
 
 
 

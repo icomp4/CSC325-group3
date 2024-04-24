@@ -1,8 +1,11 @@
 package shadyAuto.ScheduleBuilder;
 
+import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.gson.annotations.SerializedName;
 
 public class Schedule {
+    private String id;
+    private String docName;
     @SerializedName("name")
     private String name;
     @SerializedName("monday")
@@ -20,6 +23,28 @@ public class Schedule {
     private String saturday = " ";
     @SerializedName("sunday")
     private String sunday = " ";
+
+//    public Schedule(QueryDocumentSnapshot document) {
+//        this.id = document.getId();  // get the document ID
+//        docName = document.getString("name");  // assuming there's a name field
+//        // initialize other fields similarly
+//    }
+
+    public Schedule(QueryDocumentSnapshot document) {
+        this.id = document.getId(); // Get the document ID
+        this.name = document.getString("name"); // Ensure 'name' matches the field in Firestore
+        this.monday = document.getString("monday");
+        this.tuesday = document.getString("tuesday");
+        this.wednesday = document.getString("wednesday");
+        this.thursday = document.getString("thursday");
+        this.friday = document.getString("friday");
+        this.saturday = document.getString("saturday");
+        this.sunday = document.getString("sunday");
+
+        // Debugging output to check what is being retrieved
+        System.out.println(this);
+    }
+
 
 
     public Schedule(String name, String monday, String tuesday, String wednesday, String thursday,
@@ -96,6 +121,10 @@ public class Schedule {
 
     public void setSunday(String sunday) {
         this.sunday = sunday;
+    }
+
+    public String getDocName() {
+        return docName;
     }
 
     @Override
