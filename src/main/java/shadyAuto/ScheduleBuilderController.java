@@ -298,48 +298,18 @@ public class ScheduleBuilderController {
 
 
 
+
+
+
+
+
+
     //*****************************************************************************************************************
-    //                                      Switching and Navigating Between Windows
+    //                      Event Handler to Switch from Schedule Builder to Main Screen
     //*****************************************************************************************************************
-    public void switchToEmployeeSchedule(){
+    public void switchToMainScreen(){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("employee-schedule.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = ShadyAuto.getPrimaryStage();
-
-            // Set the new scene
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
-
-    //*****************************************************************************************************************
-    //                      Event Handler to temporarily switch and Navigating Between Windows
-    //*****************************************************************************************************************
-    public void switchToScheduleBuilder(){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("schedule-builder.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = ShadyAuto.getPrimaryStage();
-
-            // Set the new scene
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
+            ShadyAuto.setRoot("MainScreen");
         }
         catch (IOException e){
             e.printStackTrace();
