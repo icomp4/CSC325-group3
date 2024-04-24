@@ -92,4 +92,17 @@ public class CustomerController {
             return false;
         }
     }
+    public String GetIDFromName(String firstName, String lastName){
+        try{
+            ApiFuture<QuerySnapshot> query = db.initialize().collection("Customers").whereEqualTo("firstname", firstName).whereEqualTo("lastname", lastName).get();
+            QuerySnapshot querySnapshot = query.get();
+            if(querySnapshot.isEmpty()){
+                return null;
+            } else {
+                return querySnapshot.getDocuments().getFirst().getId();
+            }
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

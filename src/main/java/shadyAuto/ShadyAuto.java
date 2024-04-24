@@ -12,7 +12,7 @@ import shadyAuto.FirebaseControllers.FirestoreDBConnection;
 
 import java.io.IOException;
 
-public class LoginController extends Application {
+public class ShadyAuto extends Application {
     public static Scene scene;
     public static Firestore fstore;
     public static FirebaseAuth fauth;
@@ -38,6 +38,7 @@ public class LoginController extends Application {
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     public static void main(String[] args) {
@@ -50,7 +51,7 @@ public class LoginController extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ShadyAuto.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
