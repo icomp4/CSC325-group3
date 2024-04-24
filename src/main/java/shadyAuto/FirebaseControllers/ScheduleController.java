@@ -32,7 +32,6 @@ public class ScheduleController {
             schedule.put("saturday", days[5]);
             schedule.put("sunday", days[6]);
             db.initialize().collection("schedules").document(name).set(schedule);
-            LOGGER.info("Successfully created new schedule for: " + name);
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during CreateSchedule", e);
