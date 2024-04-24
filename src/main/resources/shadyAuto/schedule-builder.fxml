@@ -20,7 +20,7 @@
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#clearScheduleTableHandler" text="Clear Table" />
                     <MenuItem mnemonicParsing="false" onAction="#deleteScheduleHandler" text="Delete Schedule" />
-               <MenuItem mnemonicParsing="false" onAction="#switchToEmployeeSchedule" text="Switch To Employee Schedule" />
+               <MenuItem mnemonicParsing="false" onAction="#switchToMainScreen" text="Exit to Main Menu" />
                 </items>
             </Menu>
         </menus>
