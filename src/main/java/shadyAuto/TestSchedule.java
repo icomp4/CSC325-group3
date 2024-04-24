@@ -9,14 +9,14 @@ import shadyAuto.Models.Vehicle;
 import java.util.UUID;
 
 public class TestSchedule {
-    VehicleController vehicleController = new VehicleController(LoginController.db);
+    VehicleController vehicleController = new VehicleController(ShadyAuto.db);
 
     @FXML
     private Label loginLabel;
 
     @FXML
     void createSchedule(ActionEvent event) {
-        VehicleController vehicleController = new VehicleController(LoginController.db);
+        VehicleController vehicleController = new VehicleController(ShadyAuto.db);
         String ownerID = String.valueOf(UUID.randomUUID());
         String vehicleID = String.valueOf(UUID.randomUUID());
         Vehicle vehicle = new Vehicle(ownerID, "BMW", "M4", 2024, vehicleID, "123ABC");

@@ -2,7 +2,7 @@ package shadyAuto.FirebaseControllers;
 
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.firebase.auth.UserRecord;
-import shadyAuto.LoginController;
+import shadyAuto.ShadyAuto;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -31,7 +31,7 @@ public class UserController {
         UserRecord userRecord;
 
         try {
-            userRecord = LoginController.fauth.createUser(user);
+            userRecord = ShadyAuto.fauth.createUser(user);
             Map<String, Object> usernameMapping = new HashMap<>();
             usernameMapping.put("email", email);
             db.initialize().collection("usernameMappings").document(username).set(usernameMapping);

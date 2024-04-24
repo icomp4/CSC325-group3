@@ -68,7 +68,23 @@ public class MainController implements Initializable {
     @FXML
     void OpenSchedule(ActionEvent event) {
         try {
-            LoginController.setRoot("Schedule-builder");
+            ShadyAuto.setRoot("Schedule-builder");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void OpenAddScreen(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("AddScreen");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void OpenDashboard(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("MainScreen");
         } catch (Exception e) {
             e.printStackTrace();
         }
