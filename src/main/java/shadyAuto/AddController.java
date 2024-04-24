@@ -85,7 +85,7 @@ public class AddController {
         String fullName = ownerNameTxt.getText();
         String[] names = fullName.split(" ");
         String ownerID = customerController.GetIDFromName(names[0], names[1]);
-        Vehicle vehicle = new Vehicle(ownerID, makeTxt.getText(), modelTxt1.getText(), Integer.parseInt(yearTxt.getText()), UUID.randomUUID().toString(), plateTxt.getText());
+        Vehicle vehicle = new Vehicle( UUID.randomUUID().toString(), ownerID, makeTxt.getText(), modelTxt1.getText(), Integer.parseInt(yearTxt.getText()), plateTxt.getText());
         boolean created = vehicleController.Create(vehicle);
         if(created) {
             System.out.println("Vehicle Created");

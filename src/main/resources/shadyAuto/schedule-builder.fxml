@@ -20,7 +20,7 @@
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#clearScheduleTableHandler" text="Clear Table" />
                     <MenuItem mnemonicParsing="false" onAction="#deleteScheduleHandler" text="Delete Schedule" />
-               <MenuItem mnemonicParsing="false" onAction="#switchToMainScreen" text="Exit to Main Menu" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToMainScreen" text="Exit to Main Menu" />
                 </items>
             </Menu>
         </menus>
@@ -70,7 +70,7 @@
         <children>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#addToScheduleButton" text="Add to Schedule" />
             <Button mnemonicParsing="false" onAction="#displayScheduleHandler" text="Display Schedule" />
-         <Button mnemonicParsing="false" onAction="#removeSelectedRow" text="Remove Selected Row" />
+            <Button mnemonicParsing="false" onAction="#removeSelectedRow" text="Remove Selected Row" />
         </children>
     </HBox>
 </VBox>

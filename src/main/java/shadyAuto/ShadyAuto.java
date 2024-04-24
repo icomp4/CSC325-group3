@@ -55,7 +55,7 @@ public class ShadyAuto extends Application {
         return fxmlLoader.load();
     }
 
-//main page test
+    //main page test
     public class Main extends Application {
         double x,y = 0;
         @Override
