@@ -1,23 +1,48 @@
 package shadyAuto;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import shadyAuto.FirebaseControllers.ScheduleController;
+import shadyAuto.ScheduleBuilder.Schedule;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TestSchedule {
+/**
+ * This class is obsolete and will be deleted soon
+ */
+
+public class TestSchedule extends ScheduleBuilderController {
     ScheduleController scheduleController = new ScheduleController(ShadyAuto.db);
+
 
     @FXML
     private Label loginLabel;
 
+
+
     @FXML
-    void createSchedule(ActionEvent event) {
-        String name = "TestSchedule";
-        String[] days = {"2-9", "", "1-8", "2-9", "2-9", "", ""};
+    public void createSchedule(Schedule schedule) {
+        //default
+//        String name = "TestSchedule";
+//        String[] days = {"2-9", "", "1-8", "2-9", "2-9", "", ""};
+
+        //New version
+        String name = schedule.getName();
+        String[] days = {schedule.getMonday(), schedule.getTuesday(), schedule.getWednesday(),
+        schedule.getThursday(), schedule.getFriday(), schedule.getSaturday(), schedule.getSunday()};
+
+
         boolean created = scheduleController.CreateSchedule(name, days);
         if(created){
             System.out.println("Successfully created new schedule: " + name);
@@ -50,18 +75,25 @@ public class TestSchedule {
             System.out.println("Error during GetSchedule");
         }
     }
+
+
     @FXML
-    void getAll(ActionEvent event) {
-        List<String> schedules = scheduleController.GetAllSchedules();
-        if(schedules != null){
+    public void getAll() {
+        Collection<Schedule> schedules = scheduleController.GetAllSchedules();
+        if (schedules != null) {
             System.out.println("Successfully retrieved all schedules");
-            for (String schedule : schedules) {
-                System.out.println(scheduleController.GetSchedule(schedule));
+            //displayScheduleMethod(schedules);  // Assuming displayScheduleMethod updates the tableView
+//            addSchedulesToTable(schedules);
+            for (Schedule schedule : schedules) {
+                System.out.println("Schedule loaded: " + schedule);
+//                list.add(schedule);
             }
         } else {
             System.out.println("Error during GetAllSchedules");
         }
     }
+
+
 
     @FXML
     void updateSchedule(ActionEvent event) {

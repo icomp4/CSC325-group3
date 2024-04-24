@@ -1,11 +1,9 @@
 package shadyAuto.FirebaseControllers;
 
 import com.google.cloud.firestore.QueryDocumentSnapshot;
+import shadyAuto.ScheduleBuilder.Schedule;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +32,7 @@ public class ScheduleController {
             schedule.put("saturday", days[5]);
             schedule.put("sunday", days[6]);
             db.initialize().collection("schedules").document(name).set(schedule);
-            LOGGER.info("Successfully created new schedule: " + name);
+            LOGGER.info("Successfully created new schedule for: " + name);
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during CreateSchedule", e);
@@ -47,10 +45,26 @@ public class ScheduleController {
     * @param name: the name of the schedule
     * @return boolean: true if the schedule was successfully deleted, false otherwise
      */
+    public boolean DeleteSelectedSchedule(String name){
+        try {
+            db.initialize().collection("schedules").document(name).delete();
+            LOGGER.info("Successfully deleted schedule for: " + name);
+            return true;
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error during DeleteSchedule", e);
+            return false;
+        }
+    }
+
+    /*
+     * DeleteSchedule deletes an existing schedule from the Firestore database
+     * @param name: the name of the schedule
+     * @return boolean: true if the schedule was successfully deleted, false otherwise
+     */
     public boolean DeleteSchedule(String name){
         try {
             db.initialize().collection("schedules").document(name).delete();
-            LOGGER.info("Successfully deleted schedule: " + name);
+            LOGGER.info("Successfully deleted schedule for: " + name);
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during DeleteSchedule", e);
@@ -76,7 +90,7 @@ public class ScheduleController {
             schedule.put("saturday", days[5]);
             schedule.put("sunday", days[6]);
             db.initialize().collection("schedules").document(name).set(schedule);
-            LOGGER.info("Successfully updated schedule: " + name);
+            LOGGER.info("Successfully updated schedule for: " + name);
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during UpdateSchedule", e);
@@ -112,14 +126,15 @@ public class ScheduleController {
     * @return List<String>: a list of all schedule names, only returning name so GetSchedule can be called on each name later
     * @return null if an error occurs
      */
-    public List<String> GetAllSchedules(){
+    public Collection<Schedule> GetAllSchedules(){
         try {
-            List<QueryDocumentSnapshot> documents = db.initialize().collection("schedules").get().get().getDocuments();
-            List<String> scheduleNames = new ArrayList<>();
+            Collection<QueryDocumentSnapshot> documents = db.initialize().collection("schedules").get().get().getDocuments();
+            Collection<Schedule> schedules = new ArrayList<>();
             for (QueryDocumentSnapshot document : documents) {
-                scheduleNames.add(document.getId());
+                Schedule schedule = new Schedule(document);
+                schedules.add(schedule);
             }
-            return scheduleNames;
+            return schedules;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during GetAllSchedules", e);
             return null;
