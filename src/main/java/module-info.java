@@ -12,6 +12,7 @@ module org.shadyAuto {
     requires com.google.api.apicommon;
     requires io.github.cdimascio.dotenv.java;
     requires java.logging;
+    requires junit;
 
 
     exports shadyAuto;
@@ -21,7 +22,7 @@ module org.shadyAuto {
     opens shadyAuto.Models to javafx.fxml;
     opens shadyAuto.ScheduleBuilder to javafx.fxml, com.google.gson;
     opens shadyAuto to com.google.gson, javafx.fxml;
-
+    exports test to junit;
 
     exports shadyAuto.ScheduleBuilder;
 }

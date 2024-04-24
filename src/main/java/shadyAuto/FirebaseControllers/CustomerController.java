@@ -47,14 +47,13 @@ public class CustomerController {
     }
     public boolean Create(Customer newCustomer) {
         {
-            UUID id = UUID.randomUUID();
             HashMap<String, Object> data = new HashMap<>();
             data.put("firstname", newCustomer.getFirstName());
             data.put("lastname", newCustomer.getLastName());
             data.put("phoneNumber", newCustomer.getPhoneNumber());
             data.put("customerID", newCustomer.getCustomerID());
             try {
-                db.initialize().collection("Customers").document(id.toString()).set(data);
+                db.initialize().collection("Customers").document(newCustomer.getCustomerID()).set(data);
                 return true;
             } catch (Exception e) {
                 return false;

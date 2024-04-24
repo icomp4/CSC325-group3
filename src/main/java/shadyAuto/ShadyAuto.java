@@ -33,12 +33,11 @@ public class ShadyAuto extends Application {
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
 
-        scene = new Scene(loadFXML("schedule-builder"));
+        scene = new Scene(loadFXML("mainScreen"));
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-        stage.setResizable(false);
     }
 
     public static void main(String[] args) {

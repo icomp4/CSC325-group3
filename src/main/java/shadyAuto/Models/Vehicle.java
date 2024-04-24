@@ -1,7 +1,7 @@
 package shadyAuto.Models;
 
 public class Vehicle {
-    private String owner;
+    private String ownerID;
     private String make;
     private String model;
     private int year;
@@ -15,12 +15,13 @@ public class Vehicle {
 
     }
 
-    public Vehicle(String owner, String make, String model, int year, String vehicleID, String licensePlate) {
-        this.owner = owner;
+    public Vehicle(String vehicleID,String ownerID, String make, String model, int year, String licensePlate) {
+        this.vehicleID = vehicleID;
+        this.ownerID = ownerID;
         this.make = make;
         this.model = model;
         this.year = year;
-        this.vehicleID = vehicleID;
+
         this.licensePlate = licensePlate;
     }
 
@@ -28,8 +29,8 @@ public class Vehicle {
         Setters
     */
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
     }
 
     public void setMake(String make) {
@@ -50,8 +51,8 @@ public class Vehicle {
         Getters
     */
 
-    public String getOwner() {
-        return owner;
+    public String getOwnerID() {
+        return ownerID;
     }
     public String getLicensePlate(){
         return this.licensePlate;

@@ -21,7 +21,7 @@ public class VehicleController {
     public boolean Create(Vehicle newVehicle){
         HashMap<String, Object> data = new HashMap<>();
         data.put("vehicleID", newVehicle.getVehicleID());
-        data.put("owner", newVehicle.getOwner());
+        data.put("ownerID", newVehicle.getOwnerID());
         data.put("make", newVehicle.getMake());
         data.put("model", newVehicle.getModel());
         data.put("year", newVehicle.getYear());
@@ -40,11 +40,11 @@ public class VehicleController {
             DocumentSnapshot document = result.get();
             if (document.exists()) {
                 return new Vehicle(
-                        document.getString("owner"),
+                        document.getString("vehicleID"),
+                        document.getString("ownerID"),
                         document.getString("make"),
                         document.getString("model"),
                         Objects.requireNonNull(document.getLong("year")).intValue(),
-                        document.getString("vehicleID"),
                         document.getString("licensePlate")
                 );
             } else {
@@ -63,11 +63,11 @@ public class VehicleController {
             Vehicle[] vehicles = new Vehicle[documents.size()];
             for (int i = 0; i < documents.size(); i++) {
                 vehicles[i] = new Vehicle(
-                        documents.getDocuments().get(i).getString("owner"),
+                        documents.getDocuments().get(i).getString("vehicleID"),
+                        documents.getDocuments().get(i).getString("ownerID"),
                         documents.getDocuments().get(i).getString("make"),
                         documents.getDocuments().get(i).getString("model"),
                         Objects.requireNonNull(documents.getDocuments().get(i).getLong("year")).intValue(),
-                        documents.getDocuments().get(i).getString("vehicleID"),
                         documents.getDocuments().get(i).getString("licensePlate")
                 );
             }
@@ -95,11 +95,11 @@ public class VehicleController {
             QuerySnapshot documents = result.get();
             if(!documents.isEmpty()){
                 return new Vehicle(
-                        documents.getDocuments().getFirst().getString("owner"),
+                        documents.getDocuments().getFirst().getString("vehicleID"),
+                        documents.getDocuments().getFirst().getString("ownerID"),
                         documents.getDocuments().getFirst().getString("make"),
                         documents.getDocuments().getFirst().getString("model"),
                         Objects.requireNonNull(documents.getDocuments().getFirst().getLong("year")).intValue(),
-                        documents.getDocuments().getFirst().getString("vehicleID"),
                         documents.getDocuments().getFirst().getString("licensePlate")
                 );
             } else {
