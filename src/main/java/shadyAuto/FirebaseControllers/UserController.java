@@ -2,7 +2,7 @@ package shadyAuto.FirebaseControllers;
 
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.firebase.auth.UserRecord;
-import shadyAuto.ShadyAuto;
+import shadyAuto.LoginController;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -31,11 +31,10 @@ public class UserController {
         UserRecord userRecord;
 
         try {
-            userRecord = ShadyAuto.fauth.createUser(user);
+            userRecord = LoginController.fauth.createUser(user);
             Map<String, Object> usernameMapping = new HashMap<>();
             usernameMapping.put("email", email);
             db.initialize().collection("usernameMappings").document(username).set(usernameMapping);
-            LOGGER.info("Successfully created new user: " + userRecord.getUid());
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during SignUp", e);
@@ -72,7 +71,6 @@ public class UserController {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                System.out.println("Login successful for user: " + username);
                 return true;
             } else {
                 LOGGER.warning("Login failed for username: " + username);

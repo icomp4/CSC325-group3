@@ -30,12 +30,12 @@ public class ShadyController implements Initializable {
     void Login(ActionEvent event) throws IOException {
         String usernameTxt = this.usernameTxt.getText();
         String pwTxt = this.pwTxt.getText();
-        UserController userController = new UserController(ShadyAuto.db);
+        UserController userController = new UserController(LoginController.db);
         if(usernameTxt != "" && pwTxt != "") {
             boolean login = userController.Login(usernameTxt, pwTxt);
             if(login) {
-                shadyAuto.ShadyAuto.setRoot("MainScreen");
-              shadyAuto.ShadyAuto.getPrimaryStage().setMaximized(true);
+                LoginController.setRoot("MainScreen");
+
             } else {
                 errorLbl.setText("Login Failed");
                 errorLbl.setTextFill(javafx.scene.paint.Color.RED);

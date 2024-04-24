@@ -390,7 +390,7 @@ public class ScheduleBuilderController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("employee-schedule.fxml"));
             Parent root = loader.load();
 
-            Stage stage = ShadyAuto.getPrimaryStage();
+            Stage stage = LoginController.getPrimaryStage();
 
             // Set the new scene
             Scene scene = new Scene(root);
@@ -417,7 +417,7 @@ public class ScheduleBuilderController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("schedule-builder.fxml"));
             Parent root = loader.load();
 
-            Stage stage = ShadyAuto.getPrimaryStage();
+            Stage stage = LoginController.getPrimaryStage();
 
             // Set the new scene
             Scene scene = new Scene(root);
