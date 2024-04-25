@@ -89,4 +89,14 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+    @FXML
+    void OpenEmployeesSchedule(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("employee-schedule");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
