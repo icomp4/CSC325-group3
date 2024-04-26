@@ -17,7 +17,7 @@
         <menus>
             <Menu mnemonicParsing="false" text="Menu">
             <items>
-               <MenuItem mnemonicParsing="false" onAction="#switchToScheduleBuilder" text="Switch To Schedule Builder" />
+               <MenuItem mnemonicParsing="false" onAction="#switchToMainScreen" text="Exit to Main Menu" />
             </items>
             </Menu>
         </menus>
