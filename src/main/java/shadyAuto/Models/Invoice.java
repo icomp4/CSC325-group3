@@ -14,7 +14,7 @@ public class Invoice {
         Constructors
      */
 
-    public Invoice(String invoiceID, String vehicleID, String customerID, ArrayList<Part> partsOrder, double price, String date){
+    public Invoice(String invoiceID, String vehicleID, String customerID, ArrayList<Part> partsOrder, String date){
         this.invoiceID = invoiceID;
         this.vehicleID = vehicleID;
         this.customerID = customerID;

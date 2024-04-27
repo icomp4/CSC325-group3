@@ -32,7 +32,7 @@ public class InvoiceTest {
         Part part3 = new Part(PartID3,"testPart3", 300.00);
         partsOrder.add(part3);
 
-        invoice = new Invoice(invoiceID, vehicleID, customerID, partsOrder, 0, "2021-04-01");
+        invoice = new Invoice(invoiceID, vehicleID, customerID, partsOrder, "2021-04-01");
         System.setOut(new PrintStream(outContent));
     }
 
