@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -22,6 +23,9 @@ public class MainController implements Initializable {
 
     @FXML
     private Label MenuClose;
+
+    @FXML
+    private Label nameTxt;
 
     @FXML
     private AnchorPane slider;
@@ -64,6 +68,7 @@ public class MainController implements Initializable {
                 MenuClose.setVisible(false);
             });
         });
+        nameTxt.setText("Welcome Back " + LoginScreen.employeeName + "!");
     }
     @FXML
     void OpenSchedule(ActionEvent event) {

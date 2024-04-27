@@ -22,7 +22,7 @@ public class UserController {
         UserController.db = db;
     }
 
-    public boolean SignUp(String email, String username, String password) {
+    public boolean SignUp(String fname, String lname, String email, String username, String password) {
         UserRecord.CreateRequest user = new UserRecord.CreateRequest()
                 .setEmail(email)
                 .setPassword(password)
@@ -34,6 +34,8 @@ public class UserController {
             userRecord = ShadyAuto.fauth.createUser(user);
             Map<String, Object> usernameMapping = new HashMap<>();
             usernameMapping.put("email", email);
+            usernameMapping.put("first name", fname);
+            usernameMapping.put("last name", lname);
             db.initialize().collection("usernameMappings").document(username).set(usernameMapping);
             return true;
         } catch (Exception e) {
@@ -42,14 +44,14 @@ public class UserController {
         }
     }
 
-    public boolean Login(String username, String password) {
+    public String Login(String username, String password) {
         Dotenv dotenv = Dotenv.load();
         String API_KEY = dotenv.get("API_KEY");
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + API_KEY;
         String email = getEmailByUsername(username);
         if (email == null) {
             LOGGER.warning("Email not found for username: " + username);
-            return false;
+            return "";
         }
         Map<Object, Object> data = new HashMap<>();
         data.put("email", email);
@@ -71,14 +73,14 @@ public class UserController {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                return true;
+                return getNameByUsername(username);
             } else {
                 LOGGER.warning("Login failed for username: " + username);
-                return false;
+                return "";
             }
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during Login", e);
-            return false;
+            return "g";
         }
     }
 
@@ -93,6 +95,20 @@ public class UserController {
             }
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error getting email by username", e);
+            return null;
+        }
+    }
+    private String getNameByUsername(String username) {
+        try {
+            DocumentSnapshot document = db.initialize().collection("usernameMappings").document(username).get().get();
+            if (document.exists()) {
+                return document.getString("first name") + " " + document.getString("last name");
+            } else {
+                LOGGER.warning("Username not found: " + username);
+                return null;
+            }
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error getting name by username", e);
             return null;
         }
     }
