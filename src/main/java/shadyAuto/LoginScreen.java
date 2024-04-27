@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginScreen implements Initializable {
+    public static String employeeName;
 
     @FXML
     private Pane Background;
@@ -32,8 +33,9 @@ public class LoginScreen implements Initializable {
         String pwTxt = this.pwTxt.getText();
         UserController userController = new UserController(ShadyAuto.db);
         if(usernameTxt != "" && pwTxt != "") {
-            boolean login = userController.Login(usernameTxt, pwTxt);
-            if(login) {
+            String login = userController.Login(usernameTxt, pwTxt);
+            if(login != ""){
+                employeeName = login;
                 ShadyAuto.setRoot("MainScreen");
 
             } else {
