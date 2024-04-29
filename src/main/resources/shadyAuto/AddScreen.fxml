@@ -13,15 +13,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.AddController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.AddController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
             <top>
                 <AnchorPane prefHeight="65.0" prefWidth="690.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
                     <children>
-                        <Pane layoutX="102.0" layoutY="20.0" prefHeight="25.0" prefWidth="706.0" style="-fx-background-color: #38383a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Pane layoutX="102.0" layoutY="20.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="706.0" style="-fx-background-color: #38383a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="678.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../Images/exit.png" />
                                     </image>
@@ -75,6 +75,9 @@
                             </font>
                         </Label>
                     </children>
+               <BorderPane.margin>
+                  <Insets right="6.0" />
+               </BorderPane.margin>
                 </AnchorPane>
             </top>
             <left>
@@ -136,9 +139,9 @@
                 </AnchorPane>
             </left>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="337.0" prefWidth="542.0">
+                  <HBox alignment="CENTER" prefHeight="337.0" prefWidth="542.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="226.0" spacing="15.0">
                            <children>
