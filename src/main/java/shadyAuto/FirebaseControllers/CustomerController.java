@@ -29,7 +29,7 @@ public class CustomerController {
      */
     private Customer getCustomer(String customerDetails) {
         try {
-            ApiFuture<DocumentSnapshot> result = db.initialize().collection("Customers").document(customerDetails).get();
+            ApiFuture<DocumentSnapshot> result = db.initialize().collection("customers").document(customerDetails).get();
             DocumentSnapshot document = result.get();
             if (document.exists()) {
                 return new Customer(
@@ -53,7 +53,7 @@ public class CustomerController {
             data.put("phoneNumber", newCustomer.getPhoneNumber());
             data.put("customerID", newCustomer.getCustomerID());
             try {
-                db.initialize().collection("Customers").document(newCustomer.getCustomerID()).set(data);
+                db.initialize().collection("customers").document(newCustomer.getCustomerID()).set(data);
                 return true;
             } catch (Exception e) {
                 return false;
@@ -66,7 +66,7 @@ public class CustomerController {
     }
     public shadyAuto.Models.Customer GetByName(String firsName, String lastName) {
         try{
-            ApiFuture<QuerySnapshot> query = db.initialize().collection("Customers").whereEqualTo("firstname", firsName).whereEqualTo("lastname", lastName).get();
+            ApiFuture<QuerySnapshot> query = db.initialize().collection("customers").whereEqualTo("firstname", firsName).whereEqualTo("lastname", lastName).get();
             QuerySnapshot querySnapshot = query.get();
             if(querySnapshot.isEmpty()){
                 return null;
@@ -84,7 +84,7 @@ public class CustomerController {
     }
     public boolean Delete(String customerID) {
         try {
-            DocumentReference docRef = db.initialize().collection("Customers").document(customerID);
+            DocumentReference docRef = db.initialize().collection("customers").document(customerID);
             docRef.delete();
             return true;
         } catch (Exception e) {
@@ -93,7 +93,7 @@ public class CustomerController {
     }
     public String GetIDFromName(String firstName, String lastName){
         try{
-            ApiFuture<QuerySnapshot> query = db.initialize().collection("Customers").whereEqualTo("firstname", firstName).whereEqualTo("lastname", lastName).get();
+            ApiFuture<QuerySnapshot> query = db.initialize().collection("customers").whereEqualTo("firstname", firstName).whereEqualTo("lastname", lastName).get();
             QuerySnapshot querySnapshot = query.get();
             if(querySnapshot.isEmpty()){
                 return null;
