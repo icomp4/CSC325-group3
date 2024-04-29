@@ -25,4 +25,6 @@ module org.shadyAuto {
     exports test to junit;
 
     exports shadyAuto.ScheduleBuilder;
+    exports shadyAuto.Controllers;
+    opens shadyAuto.Controllers to com.google.gson, javafx.fxml;
 }

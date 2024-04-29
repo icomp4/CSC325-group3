@@ -1,4 +1,4 @@
-package shadyAuto;
+package shadyAuto.Controllers;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import shadyAuto.LoginScreen;
+import shadyAuto.ShadyAuto;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,7 +38,7 @@ public class MainController implements Initializable {
         Exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
-        slider.setTranslateX(-176);
+        slider.setTranslateX(0); //-176 to show again
         Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.4));
@@ -71,9 +73,9 @@ public class MainController implements Initializable {
         nameTxt.setText("Welcome Back " + LoginScreen.employeeName + "!");
     }
     @FXML
-    void OpenSchedule(ActionEvent event) {
+    void OpenScheduleBuilder(ActionEvent event) {
         try {
-            ShadyAuto.setRoot("Schedule-builder");
+            ShadyAuto.setRoot("schedule-builder");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,6 +102,14 @@ public class MainController implements Initializable {
     void OpenEmployeesSchedule(ActionEvent event) {
         try {
             ShadyAuto.setRoot("employee-schedule");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void OpenHistory(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("HistoryScreen");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package shadyAuto;
+package shadyAuto.Controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import shadyAuto.FirebaseControllers.ScheduleController;
 import shadyAuto.ScheduleBuilder.Schedule;
+import shadyAuto.ShadyAuto;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -458,10 +459,15 @@ public class ScheduleBuilderController {
         }
     }
 
+    @FXML
+    void switchToMainScreen(ActionEvent event){
+        try {
+            ShadyAuto.setRoot("MainScreen");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-
-
+    }
 
 
 }

@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.AddController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.HistoryController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -21,7 +22,7 @@
                     <children>
                         <Pane layoutX="102.0" layoutY="20.0" prefHeight="25.0" prefWidth="706.0" style="-fx-background-color: #38383a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="678.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="1256.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../Images/exit.png" />
                                     </image>
@@ -30,7 +31,7 @@
                         </Pane>
                         <HBox alignment="TOP_RIGHT" layoutX="239.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                             <children>
-                                <Button prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
+                                <Button fx:id="accountBtn" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
                                     <graphic>
                                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -39,15 +40,15 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="160.0" styleClass="menuItem" text="Schedule Builder">
-                                    <graphic>
-                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../Images/calendar.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
+                        <Button onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="154.0" styleClass="menuItem" text="Schedule Builder">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/calendar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                             </children>
                         </HBox>
                         <Label fx:id="Menu" layoutX="14.0" layoutY="36.0" prefHeight="22.0" prefWidth="92.0" text="MENU" textFill="#b7b7b7" AnchorPane.bottomAnchor="7.007998687500045" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="618.063980710938" AnchorPane.topAnchor="36.0">
@@ -82,7 +83,7 @@
                     <children>
                         <VBox layoutX="14.0" layoutY="35.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                             <children>
-                                <Button alignment="BASELINE_LEFT" onAction="#OpenDashboard" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Dashboard" textFill="WHITE">
+                                <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" onAction="#OpenDashboard" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Dashboard" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -94,7 +95,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Add" textFill="WHITE">
+                                <Button fx:id="addBtn" alignment="BASELINE_LEFT" onAction="#OpenAddScreen" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Add" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -106,7 +107,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" onAction="#OpenHistory" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="History" textFill="WHITE">
+                                <Button alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="History" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -118,7 +119,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" onAction="#OpenSchedule" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Schedule" textFill="WHITE">
+                                <Button fx:id="scheduleBtn" alignment="BASELINE_LEFT" onAction="#OpenSchedule" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Schedule" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -136,72 +137,21 @@
                 </AnchorPane>
             </left>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="335.0" prefWidth="356.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="337.0" prefWidth="542.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="226.0" spacing="15.0">
-                           <children>
-                              <Label text="New Customer Data">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="fnameTxt" promptText="Enter customer first name...">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="lnameTxt" promptText="Enter customer last name...">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="phoneTxt" promptText="Enter customer phone number...">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" onAction="#AddCustomer" text="Add" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="335.0" prefWidth="254.0" spacing="5.0">
-                           <children>
-                              <Label text="New Vehicle">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="ownerNameTxt" promptText="Enter vehicle owner name">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="makeTxt" promptText="Enter vehicle make">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="modelTxt1" promptText="Enter vehicle model">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="yearTxt" promptText="Enter vehicle year">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="plateTxt" promptText="Enter vehicle plate">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" onAction="#AddVehicle" text="Add" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
+                  <TableView prefHeight="634.0" prefWidth="1110.0">
+                    <columns>
+                      <TableColumn prefWidth="136.0" text="InvoiceID" />
+                      <TableColumn prefWidth="110.0" text="Vehicle" />
+                        <TableColumn prefWidth="314.0" text="Customer Name" />
+                        <TableColumn prefWidth="129.0" text="Price" />
+                        <TableColumn minWidth="0.0" prefWidth="117.0" text="Date" />
+                        <TableColumn minWidth="0.0" prefWidth="303.0" text="Parts" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TableView>
                </children>
             </VBox>
          </center>
