@@ -27,7 +27,7 @@ public class VehicleController {
         data.put("year", newVehicle.getYear());
         data.put("licensePlate", newVehicle.getLicensePlate());
         try {
-            db.initialize().collection("Vehicles").document(newVehicle.getVehicleID()).set(data);
+            db.initialize().collection("vehicles").document(newVehicle.getVehicleID()).set(data);
             return true;
         } catch (Exception e) {
             LOGGER.log(LOGGER.getLevel(), "Error during CreateVehicle", e);
@@ -36,7 +36,7 @@ public class VehicleController {
     }
     private Vehicle getVehicle(String vehicleDetails) {
         try {
-            ApiFuture<DocumentSnapshot> result = db.initialize().collection("Vehicles").document(vehicleDetails).get();
+            ApiFuture<DocumentSnapshot> result = db.initialize().collection("vehicles").document(vehicleDetails).get();
             DocumentSnapshot document = result.get();
             if (document.exists()) {
                 return new Vehicle(
@@ -58,7 +58,7 @@ public class VehicleController {
     }
     public Vehicle[] GetByOwnerID(String ownerID) {
         try {
-            ApiFuture<QuerySnapshot> result = db.initialize().collection("Vehicles").whereEqualTo("ownerID", ownerID).get();
+            ApiFuture<QuerySnapshot> result = db.initialize().collection("vehicles").whereEqualTo("ownerID", ownerID).get();
             QuerySnapshot documents = result.get();
             Vehicle[] vehicles = new Vehicle[documents.size()];
             for (int i = 0; i < documents.size(); i++) {
@@ -79,7 +79,7 @@ public class VehicleController {
     }
     public boolean Delete(String vehicleID) {
         try {
-            db.initialize().collection("Vehicles").document(vehicleID).delete();
+            db.initialize().collection("vehicles").document(vehicleID).delete();
             return true;
         } catch (Exception e) {
             LOGGER.log(LOGGER.getLevel(), "Error during DeleteVehicle", e);
@@ -91,7 +91,7 @@ public class VehicleController {
     }
     public Vehicle GetByLicense(String license){
         try {
-            ApiFuture<QuerySnapshot> result = db.initialize().collection("Vehicles").whereEqualTo("licensePlate", license).get();
+            ApiFuture<QuerySnapshot> result = db.initialize().collection("vehicles").whereEqualTo("licensePlate", license).get();
             QuerySnapshot documents = result.get();
             if(!documents.isEmpty()){
                 return new Vehicle(
@@ -113,10 +113,10 @@ public class VehicleController {
     }
     public boolean DeleteByLicense(String license){
         try {
-            ApiFuture<QuerySnapshot> result = db.initialize().collection("Vehicles").whereEqualTo("licensePlate", license).get();
+            ApiFuture<QuerySnapshot> result = db.initialize().collection("vehicles").whereEqualTo("licensePlate", license).get();
             QuerySnapshot documents = result.get();
             if(!documents.isEmpty()){
-                db.initialize().collection("Vehicles").document(documents.getDocuments().getFirst().getId()).delete();
+                db.initialize().collection("vehicles").document(documents.getDocuments().getFirst().getId()).delete();
                 return true;
             } else {
                 LOGGER.log(LOGGER.getLevel(), "Vehicle not found: " + license);

@@ -73,4 +73,8 @@ public class Vehicle {
     public String getVehicleID() {
         return vehicleID;
     }
+
+    public String toString(){
+        return this.year + " " + this.make + " " + this.model + " ";
+    }
 }

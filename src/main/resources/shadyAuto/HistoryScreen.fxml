@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.HistoryController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.HistoryController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -139,14 +139,14 @@
          <center>
             <VBox prefHeight="335.0" prefWidth="356.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView prefHeight="634.0" prefWidth="1110.0">
+                  <TableView fx:id="invoiceTable" prefHeight="634.0" prefWidth="1110.0">
                     <columns>
-                      <TableColumn prefWidth="136.0" text="InvoiceID" />
-                      <TableColumn prefWidth="110.0" text="Vehicle" />
-                        <TableColumn prefWidth="314.0" text="Customer Name" />
-                        <TableColumn prefWidth="129.0" text="Price" />
-                        <TableColumn minWidth="0.0" prefWidth="117.0" text="Date" />
-                        <TableColumn minWidth="0.0" prefWidth="303.0" text="Parts" />
+                      <TableColumn fx:id="invoiceIDColumn" prefWidth="136.0" text="InvoiceID" />
+                      <TableColumn fx:id="vehicleColumn" prefWidth="110.0" text="Vehicle" />
+                        <TableColumn fx:id="customerNameColumn" prefWidth="314.0" text="Customer Name" />
+                        <TableColumn fx:id="priceColumn" prefWidth="129.0" text="Price" />
+                        <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="117.0" text="Date" />
+                        <TableColumn fx:id="partsColumn" minWidth="0.0" prefWidth="303.0" text="Parts" />
                     </columns>
                      <VBox.margin>
                         <Insets />

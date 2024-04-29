@@ -1,8 +1,13 @@
 package shadyAuto.Models;
 
+import shadyAuto.FirebaseControllers.InvoiceController;
+import shadyAuto.ShadyAuto;
+
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Invoice {
+    private InvoiceController invoiceController = new InvoiceController(ShadyAuto.db);
     private String invoiceID;
     private String vehicleID;
     private String customerID;
@@ -47,10 +52,9 @@ public class Invoice {
         return partsOrder;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPrice() {
+        return String.format("$%.2f", price);
     }
-
     public String getDate() {
         return date;
     }
@@ -68,5 +72,15 @@ public class Invoice {
         }
         return price;
     }
-
+    public String getPartsNames() {
+        return partsOrder.stream()
+                .map(Part::getName)
+                .collect(Collectors.joining(", "));
+    }
+    public String getOwnerName() {
+        return invoiceController.GetOwnerName(this.invoiceID);
+    }
+    public String getVehicleDetails() {
+        return invoiceController.GetVehicleDetails(this.invoiceID);
+    }
 }

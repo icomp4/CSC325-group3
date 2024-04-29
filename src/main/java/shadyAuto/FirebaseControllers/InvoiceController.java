@@ -93,5 +93,32 @@ public class InvoiceController {
             return null;
         }
     }
-
+    public String GetOwnerName(String invoiceID){
+        try {
+            DocumentSnapshot invoice = db.initialize().collection("invoices").document(invoiceID).get().get();
+            String customerID = invoice.getString("customerID");
+            DocumentSnapshot customer = db.initialize().collection("customers").document(customerID).get().get();
+            return customer.getString("firstname") + " " + customer.getString("lastname");
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public String GetVehicleDetails(String invoiceID){
+        try {
+            DocumentSnapshot invoice = db.initialize().collection("invoices").document(invoiceID).get().get();
+            String vehicleID = invoice.getString("vehicleID");
+            DocumentSnapshot vehicle = db.initialize().collection("vehicles").document(vehicleID).get().get();
+            return vehicle.getLong("year") + " " + vehicle.getString("make") + " " + vehicle.getString("model");
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public boolean DeleteInvoice(String invoiceID){
+        try {
+            db.initialize().collection("invoices").document(invoiceID).delete();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

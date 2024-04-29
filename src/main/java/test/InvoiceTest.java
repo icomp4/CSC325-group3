@@ -42,7 +42,7 @@ public class InvoiceTest {
         assertEquals("testID123", invoice.getInvoiceID());
         assertEquals("testVehicleID123", invoice.getVehicleID());
         assertEquals("testCustomerID123", invoice.getCustomerID());
-        assertEquals(600.00, invoice.getPrice(), 0.01);
+        assertEquals("$600.00", invoice.getPrice());
         assertEquals("2021-04-01", invoice.getDate());
     }
 

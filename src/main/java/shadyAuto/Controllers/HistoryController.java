@@ -2,13 +2,24 @@ package shadyAuto.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import shadyAuto.FirebaseControllers.InvoiceController;
+import shadyAuto.Models.Invoice;
 import shadyAuto.ShadyAuto;
+import javafx.scene.control.TableColumn;
 
-public class HistoryController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class HistoryController implements Initializable {
+
+    InvoiceController invoiceController = new InvoiceController(ShadyAuto.db);
 
     @FXML
     private ImageView Exit;
@@ -26,7 +37,25 @@ public class HistoryController {
     private Button addBtn;
 
     @FXML
+    private TableColumn<?, ?> customerNameColumn;
+
+    @FXML
     private Button dashboardBtn;
+
+    @FXML
+    private TableColumn<?, ?> dateColumn;
+
+    @FXML
+    private TableColumn<?, ?> invoiceIDColumn;
+
+    @FXML
+    private TableView<Invoice> invoiceTable;
+
+    @FXML
+    private TableColumn<?, ?> partsColumn;
+
+    @FXML
+    private TableColumn<?, ?> priceColumn;
 
     @FXML
     private Button scheduleBtn;
@@ -34,6 +63,8 @@ public class HistoryController {
     @FXML
     private AnchorPane slider;
 
+    @FXML
+    private TableColumn<?, ?> vehicleColumn;
     @FXML
     void OpenAddScreen(ActionEvent event) {
         try {
@@ -70,4 +101,22 @@ public class HistoryController {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Define what value to display in each cell
+        invoiceIDColumn.setCellValueFactory(new PropertyValueFactory<>("invoiceID"));
+        vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleDetails"));
+        customerNameColumn.setCellValueFactory(new PropertyValueFactory<>("ownerName"));
+        partsColumn.setCellValueFactory(new PropertyValueFactory<>("partsNames"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        // Get the data
+        Invoice[] invoices = invoiceController.GetAllInvoices();
+
+        // Add the data to the table
+        for (Invoice invoice : invoices) {
+            invoiceTable.getItems().add(invoice);
+        }
+    }
 }
