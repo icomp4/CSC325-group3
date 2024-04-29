@@ -37,6 +37,8 @@ public class ShadyAuto extends Application {
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
         stage.setScene(scene);
+        stage.setHeight(720);
+        stage.setWidth(1280);
         stage.show();
         stage.setResizable(false);
     }
@@ -73,7 +75,7 @@ public class ShadyAuto extends Application {
                 primaryStage.setY(event.getScreenY() - y);
             });
 
-            primaryStage.setScene(new Scene(root, 700, 400));
+            primaryStage.setScene(new Scene(root, 1280, 720));
             primaryStage.show();
         }
 
