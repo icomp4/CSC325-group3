@@ -1,4 +1,4 @@
-package shadyAuto;
+package shadyAuto.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +10,7 @@ import shadyAuto.FirebaseControllers.CustomerController;
 import shadyAuto.FirebaseControllers.VehicleController;
 import shadyAuto.Models.Customer;
 import shadyAuto.Models.Vehicle;
+import shadyAuto.ShadyAuto;
 
 import java.util.UUID;
 
@@ -57,7 +58,15 @@ public class AddController {
     @FXML
     void OpenSchedule(ActionEvent event) {
         try {
-            ShadyAuto.setRoot("Schedule-builder");
+            ShadyAuto.setRoot("employee-schedule");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void OpenScheduleBuilder(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("schedule-builder");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,6 +100,14 @@ public class AddController {
             System.out.println("Vehicle Created");
         } else {
             System.out.println("Vehicle not created");
+        }
+    }
+    @FXML
+    void OpenHistory(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("HistoryScreen");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
