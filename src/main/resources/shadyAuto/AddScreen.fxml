@@ -133,6 +133,15 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="452.0" prefWidth="176.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/ShadyAuto_Logo.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
                             </children>
                         </VBox>
                     </children>
