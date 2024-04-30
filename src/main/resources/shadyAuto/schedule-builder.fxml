@@ -9,68 +9,202 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="569.0" prefWidth="867.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.ScheduleBuilderController">
-    <MenuBar>
-        <menus>
-            <Menu mnemonicParsing="false" text="Menu">
-                <items>
-                    <MenuItem mnemonicParsing="false" onAction="#clearScheduleTableHandler" text="Clear Table" />
-                    <MenuItem mnemonicParsing="false" onAction="#deleteScheduleHandler" text="Delete Schedule" />
-                    <MenuItem mnemonicParsing="false" onAction="#switchToMainScreen" text="Exit to Main Menu" />
-                </items>
-            </Menu>
-        </menus>
-    </MenuBar>
-
-    <Label fx:id="welcomeText" alignment="TOP_CENTER" text="Schedule Builder">
-        <font>
-            <Font size="29.0" />
-        </font>
-        <padding>
-            <Insets left="20.0" />
-        </padding></Label>
-    <TableView fx:id="tableView" editable="true" prefHeight="299.0" prefWidth="827.0">
-        <columns>
-            <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="tableColumnMonday" prefWidth="75.0" text="Monday" />
-            <TableColumn fx:id="tableColumnTuesday" prefWidth="75.0" text="Tuesday" />
-            <TableColumn fx:id="tableColumnWednesday" prefWidth="75.0" text="Wednesday" />
-            <TableColumn fx:id="tableColumnThursday" prefWidth="75.0" text="Thursday" />
-            <TableColumn fx:id="tableColumnFriday" prefWidth="75.0" text="Friday" />
-            <TableColumn fx:id="tableColumnSaturday" prefWidth="75.0" text="Saturday" />
-            <TableColumn fx:id="tableColumnSunday" prefWidth="75.0" text="Sunday" />
-        </columns>
-        <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-        </columnResizePolicy>
-        <VBox.margin>
-            <Insets left="20.0" right="20.0" />
-        </VBox.margin>
-    </TableView>
-    <HBox spacing="10.0">
-        <children>
-            <TextField fx:id="nameTextField" promptText="Enter Name" />
-            <TextField fx:id="mondayTextField" promptText="Enter Time" />
-            <TextField fx:id="tuesdayTextField" promptText="Enter Time" />
-            <TextField fx:id="wednesdayTextField" promptText="Enter Time" />
-            <TextField fx:id="thursdayTextField" promptText="Enter Time" />
-            <TextField fx:id="fridayTextField" promptText="Enter Time" />
-            <TextField fx:id="saturdayTextField" promptText="Enter Time" />
-            <TextField fx:id="sundayTextField" promptText="Enter Time" />
-        </children>
-        <VBox.margin>
-            <Insets left="20.0" right="20.0" />
-        </VBox.margin>
-    </HBox>
-    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-        <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#addToScheduleButton" text="Add to Schedule" />
-            <Button mnemonicParsing="false" onAction="#displayScheduleHandler" text="Display Schedule" />
-            <Button mnemonicParsing="false" onAction="#removeSelectedRow" text="Remove Selected Row" />
-        </children>
-    </HBox>
-</VBox>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.ScheduleBuilderController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="65.0" prefWidth="690.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutX="102.0" layoutY="20.0" prefHeight="25.0" prefWidth="706.0" style="-fx-background-color: #38383a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="1256.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/exit.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <HBox alignment="TOP_RIGHT" layoutX="239.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                     <children>
+                        <Button fx:id="accountBtn" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/account.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="154.0" styleClass="menuItem" text="Schedule Builder">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/calendar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label fx:id="Menu" layoutX="14.0" layoutY="36.0" prefHeight="22.0" prefWidth="92.0" text="MENU" textFill="#b7b7b7" AnchorPane.bottomAnchor="7.007998687500045" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="618.063980710938" AnchorPane.topAnchor="36.0">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="MenuClose" layoutX="14.0" layoutY="36.0" prefHeight="22.0" prefWidth="92.0" text="MENU" textFill="#b7b7b7" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="36.0">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #272a2b;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="14.0" layoutY="35.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                     <children>
+                        <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" onAction="#OpenDashboard" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Dashboard" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/dash.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="addBtn" alignment="BASELINE_LEFT" onAction="#OpenAddScreen" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Add" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" onAction="#OpenHistory" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="History" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/report.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="scheduleBtn" alignment="BASELINE_LEFT" onAction="#OpenSchedule" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Schedule" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/calendar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <VBox prefHeight="569.0" prefWidth="867.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MenuBar>
+                     <menus>
+                        <Menu mnemonicParsing="false" text="Options">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#clearScheduleTableHandler" text="Clear Table" />
+                              <MenuItem mnemonicParsing="false" onAction="#deleteScheduleHandler" text="Delete Schedule" />
+                              <MenuItem mnemonicParsing="false" onAction="#switchToMainScreen" text="Exit to Main Menu" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <Label fx:id="welcomeText" alignment="TOP_CENTER" text="Schedule Builder">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TableView fx:id="tableView" editable="true" prefHeight="299.0" prefWidth="827.0">
+                     <columns>
+                        <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="Name" />
+                        <TableColumn fx:id="tableColumnMonday" prefWidth="75.0" text="Monday" />
+                        <TableColumn fx:id="tableColumnTuesday" prefWidth="75.0" text="Tuesday" />
+                        <TableColumn fx:id="tableColumnWednesday" prefWidth="75.0" text="Wednesday" />
+                        <TableColumn fx:id="tableColumnThursday" prefWidth="75.0" text="Thursday" />
+                        <TableColumn fx:id="tableColumnFriday" prefWidth="75.0" text="Friday" />
+                        <TableColumn fx:id="tableColumnSaturday" prefWidth="75.0" text="Saturday" />
+                        <TableColumn fx:id="tableColumnSunday" prefWidth="75.0" text="Sunday" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TableView>
+                  <HBox spacing="10.0">
+                     <children>
+                        <TextField fx:id="nameTextField" promptText="Enter Name" />
+                        <TextField fx:id="mondayTextField" promptText="Enter Time" />
+                        <TextField fx:id="tuesdayTextField" promptText="Enter Time" />
+                        <TextField fx:id="wednesdayTextField" promptText="Enter Time" />
+                        <TextField fx:id="thursdayTextField" promptText="Enter Time" />
+                        <TextField fx:id="fridayTextField" promptText="Enter Time" />
+                        <TextField fx:id="saturdayTextField" promptText="Enter Time" />
+                        <TextField fx:id="sundayTextField" promptText="Enter Time" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#addToScheduleButton" text="Add to Schedule" />
+                        <Button mnemonicParsing="false" onAction="#displayScheduleHandler" text="Display Schedule" />
+                        <Button mnemonicParsing="false" onAction="#removeSelectedRow" text="Remove Selected Row" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -103,6 +103,10 @@ public class HistoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Exit.setOnMouseClicked(event -> {
+            System.exit(0);
+        });
+
         // Define what value to display in each cell
         invoiceIDColumn.setCellValueFactory(new PropertyValueFactory<>("invoiceID"));
         vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleDetails"));

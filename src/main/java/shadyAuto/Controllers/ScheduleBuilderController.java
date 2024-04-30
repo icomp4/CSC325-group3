@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import shadyAuto.FirebaseControllers.ScheduleController;
 import shadyAuto.ScheduleBuilder.Schedule;
@@ -24,6 +25,9 @@ import java.util.*;
 
 public class ScheduleBuilderController {
     ScheduleController scheduleController = new ScheduleController(ShadyAuto.db);
+
+    @FXML
+    private ImageView Exit;
 
     //********************************
     //TextFields Fx:id
@@ -105,7 +109,10 @@ public class ScheduleBuilderController {
 
 
     public void initialize(){
-        System.out.println("Initialize in ScheduleBuilderController called");
+        Exit.setOnMouseClicked(event -> {
+            System.exit(0);
+        });
+
         tableColumnName.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Name"));
         tableColumnMonday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Monday"));
         tableColumnTuesday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Tuesday"));
@@ -331,7 +338,7 @@ public class ScheduleBuilderController {
     //*****************************************************************************************************************
     public void switchToScheduleBuilder(){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("schedule-builder.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("old-schedule-builder.fxml"));
             Parent root = loader.load();
 
             Stage stage = ShadyAuto.getPrimaryStage();
@@ -467,6 +474,55 @@ public class ScheduleBuilderController {
             e.printStackTrace();
         }
 
+    }
+
+
+
+
+
+    @FXML
+    void OpenAddScreen(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("AddScreen");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void OpenDashboard(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("MainScreen");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void OpenSchedule(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("employee-schedule");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void OpenScheduleBuilder(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("schedule-builder");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void OpenHistory(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("HistoryScreen");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
