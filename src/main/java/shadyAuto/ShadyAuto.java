@@ -62,7 +62,7 @@ public class ShadyAuto extends Application {
         double x,y = 0;
         @Override
         public void start(Stage primaryStage) throws Exception{
-            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
             primaryStage.initStyle(StageStyle.UNDECORATED);
 
             root.setOnMousePressed(event -> {

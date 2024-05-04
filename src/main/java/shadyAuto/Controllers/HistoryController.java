@@ -123,4 +123,5 @@ public class HistoryController implements Initializable {
             invoiceTable.getItems().add(invoice);
         }
     }
+
 }
