@@ -22,7 +22,7 @@ public class UserController {
         UserController.db = db;
     }
 
-    public boolean SignUp(String fname, String lname, String email, String username, String password) {
+    public boolean SignUp(String fname, String lname, String email, String username, String password, boolean isManager) {
         UserRecord.CreateRequest user = new UserRecord.CreateRequest()
                 .setEmail(email)
                 .setPassword(password)
@@ -32,17 +32,22 @@ public class UserController {
 
         try {
             userRecord = ShadyAuto.fauth.createUser(user);
+
             Map<String, Object> usernameMapping = new HashMap<>();
             usernameMapping.put("email", email);
             usernameMapping.put("first name", fname);
             usernameMapping.put("last name", lname);
+            usernameMapping.put("is manager", isManager);
+
             db.initialize().collection("usernameMappings").document(username).set(usernameMapping);
+
             return true;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error during SignUp", e);
             return false;
         }
     }
+
 
     public String Login(String username, String password) {
         Dotenv dotenv = Dotenv.load();
