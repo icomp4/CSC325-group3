@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import shadyAuto.LoginScreen;
 import shadyAuto.ShadyAuto;
 
 import java.net.URL;
@@ -68,6 +69,7 @@ public class MainController implements Initializable {
                 MenuClose.setVisible(false);
             });
         });
+        nameTxt.setText("Welcome Back " + LoginScreen.employeeName + "!");
 
     }
     @FXML
