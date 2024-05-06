@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 public class LoginScreen implements Initializable {
     public static String employeeName;
+    public static String currentUser;
 
     @FXML
     private Pane Background;
@@ -40,6 +41,7 @@ public class LoginScreen implements Initializable {
             String login = userController.Login(usernameTxt, pwTxt);
             if(login != ""){
                 employeeName = login;
+                currentUser = usernameTxt;
                 ShadyAuto.setRoot("MainScreen");
 
             } else {

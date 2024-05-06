@@ -40,12 +40,11 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // Initialize UserController (assuming FirestoreDBConnection instance is provided)
-        FirestoreDBConnection dbConnection = new FirestoreDBConnection(); // Or however it's initialized
-        userController = new UserController(dbConnection);
+        userController = new UserController(ShadyAuto.db);
 
         // Example username retrieved from the login session
-        String currentUsername = LoginScreen.employeeName;
+        String currentUsername = LoginScreen.currentUser;
+        System.out.println(currentUsername);
 
         // Check if the user is a manager and modify the button's visibility
         boolean isManager = userController.getIsManagerStatus(currentUsername);

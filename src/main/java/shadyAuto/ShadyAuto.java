@@ -33,7 +33,6 @@ public class ShadyAuto extends Application {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
-
         scene = new Scene(loadFXML("LoginScreen"));
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
@@ -42,8 +41,6 @@ public class ShadyAuto extends Application {
         stage.setWidth(1280);
         stage.show();
         stage.setResizable(false);
-
-
     }
 
     public static void main(String[] args) {

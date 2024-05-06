@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,6 +15,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import shadyAuto.FirebaseControllers.ScheduleController;
+import shadyAuto.FirebaseControllers.UserController;
+import shadyAuto.LoginScreen;
 import shadyAuto.ScheduleBuilder.Schedule;
 import shadyAuto.ShadyAuto;
 
@@ -21,10 +24,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URL;
 import java.util.*;
 
-public class ScheduleBuilderController {
+public class ScheduleBuilderController implements Initializable {
     ScheduleController scheduleController = new ScheduleController(ShadyAuto.db);
+    private UserController userController;
+
+    @FXML
+    private Button scheduleBuilderBtn;
 
     @FXML
     private ImageView Exit;
@@ -107,8 +115,12 @@ public class ScheduleBuilderController {
     @FXML
     private Label title;
 
-
-    public void initialize(){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        userController = new UserController(ShadyAuto.db);
+        String currentUsername = LoginScreen.currentUser;
+        boolean isManager = userController.getIsManagerStatus(currentUsername);
+        scheduleBuilderBtn.setVisible(isManager);
         Exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
@@ -121,11 +133,7 @@ public class ScheduleBuilderController {
         tableColumnFriday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Friday"));
         tableColumnSaturday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Saturday"));
         tableColumnSunday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Sunday"));
-
     }
-
-
-
 
 
 
@@ -524,6 +532,5 @@ public class ScheduleBuilderController {
             e.printStackTrace();
         }
     }
-
 
 }

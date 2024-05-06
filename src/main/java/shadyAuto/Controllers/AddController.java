@@ -2,21 +2,28 @@ package shadyAuto.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import shadyAuto.FirebaseControllers.CustomerController;
+import shadyAuto.FirebaseControllers.UserController;
 import shadyAuto.FirebaseControllers.VehicleController;
+import shadyAuto.LoginScreen;
 import shadyAuto.Models.Customer;
 import shadyAuto.Models.Vehicle;
 import shadyAuto.ShadyAuto;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.UUID;
 
-public class AddController {
+public class AddController implements Initializable {
     CustomerController customerController = new CustomerController(ShadyAuto.db);
     VehicleController vehicleController = new VehicleController(ShadyAuto.db);
+    private UserController userController;
 
     @FXML
     private ImageView Exit;
@@ -53,6 +60,9 @@ public class AddController {
 
     @FXML
     private TextField yearTxt;
+
+    @FXML
+    private Button scheduleBuilderBtn;
 
 
     @FXML
@@ -111,4 +121,11 @@ public class AddController {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        userController = new UserController(ShadyAuto.db);
+        String currentUsername = LoginScreen.currentUser;
+        boolean isManager = userController.getIsManagerStatus(currentUsername);
+        scheduleBuilderBtn.setVisible(isManager);
+    }
 }

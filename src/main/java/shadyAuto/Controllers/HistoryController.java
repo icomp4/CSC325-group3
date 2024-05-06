@@ -10,6 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import shadyAuto.FirebaseControllers.InvoiceController;
+import shadyAuto.FirebaseControllers.UserController;
+import shadyAuto.LoginScreen;
 import shadyAuto.Models.Invoice;
 import shadyAuto.ShadyAuto;
 import javafx.scene.control.TableColumn;
@@ -20,6 +22,7 @@ import java.util.ResourceBundle;
 public class HistoryController implements Initializable {
 
     InvoiceController invoiceController = new InvoiceController(ShadyAuto.db);
+    private UserController userController;
 
     @FXML
     private ImageView Exit;
@@ -65,6 +68,9 @@ public class HistoryController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> vehicleColumn;
+
+    @FXML
+    private Button scheduleBuilderBtn;
     @FXML
     void OpenAddScreen(ActionEvent event) {
         try {
@@ -103,6 +109,11 @@ public class HistoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        userController = new UserController(ShadyAuto.db);
+        String currentUsername = LoginScreen.currentUser;
+        boolean isManager = userController.getIsManagerStatus(currentUsername);
+        scheduleBuilderBtn.setVisible(isManager);
         Exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
@@ -123,5 +134,6 @@ public class HistoryController implements Initializable {
             invoiceTable.getItems().add(invoice);
         }
     }
+
 
 }
