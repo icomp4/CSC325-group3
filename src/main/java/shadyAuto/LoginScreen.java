@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import shadyAuto.FirebaseControllers.UserController;
 import javafx.fxml.Initializable;
@@ -29,6 +30,9 @@ public class LoginScreen implements Initializable {
     private TextField usernameTxt;
 
     @FXML
+    private ImageView Exit;
+
+    @FXML
     void Login(ActionEvent event) throws IOException {
         String usernameTxt = this.usernameTxt.getText();
         String pwTxt = this.pwTxt.getText();
@@ -51,6 +55,10 @@ public class LoginScreen implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameTxt.setStyle("-fx-background-color: white;");
         pwTxt.setStyle("-fx-background-color: white;");
+        Exit.setOnMouseClicked(event -> {
+            System.exit(0);
+        });
+        
     }
 
 }
