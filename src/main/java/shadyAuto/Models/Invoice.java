@@ -52,8 +52,8 @@ public class Invoice {
         return partsOrder;
     }
 
-    public String getPrice() {
-        return String.format("$%.2f", price);
+    public Double getPrice() {
+        return this.price;
     }
     public String getDate() {
         return date;
