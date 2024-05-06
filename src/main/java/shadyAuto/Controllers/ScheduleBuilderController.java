@@ -14,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import shadyAuto.FirebaseControllers.ScheduleController;
+import shadyAuto.FirebaseControllers.UserController;
+import shadyAuto.LoginScreen;
 import shadyAuto.ScheduleBuilder.Schedule;
 import shadyAuto.ShadyAuto;
 
@@ -25,6 +27,7 @@ import java.util.*;
 
 public class ScheduleBuilderController {
     ScheduleController scheduleController = new ScheduleController(ShadyAuto.db);
+    private UserController userController;
 
     @FXML
     private ImageView Exit;
@@ -56,6 +59,8 @@ public class ScheduleBuilderController {
     @FXML
     private TextField sundayTextField;
 
+    @FXML
+    private Button scheduleBuilderBtn;
 
 
 
@@ -109,6 +114,10 @@ public class ScheduleBuilderController {
 
 
     public void initialize(){
+        userController = new UserController(ShadyAuto.db);
+        String currentUsername = LoginScreen.currentUser;
+        boolean isManager = userController.getIsManagerStatus(currentUsername);
+        scheduleBuilderBtn.setVisible(isManager);
         Exit.setOnMouseClicked(event -> {
             System.exit(0);
         });

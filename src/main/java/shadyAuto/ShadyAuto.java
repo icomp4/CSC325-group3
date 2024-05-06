@@ -33,12 +33,6 @@ public class ShadyAuto extends Application {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
-        boolean signUp = UserController.SignUp("chris", "gulino", "hello123@gmail.com", "relustee", "jklol123", true);
-        if (signUp) {
-            System.out.println("Manager account created successfully.");
-        } else {
-            System.out.println("Manager account creation failed.");
-        }
         scene = new Scene(loadFXML("LoginScreen"));
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());

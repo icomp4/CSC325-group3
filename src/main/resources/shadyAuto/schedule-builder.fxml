@@ -44,7 +44,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="154.0" styleClass="menuItem" text="Schedule Builder">
+                        <Button fx:id="scheduleBuilderBtn" onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="154.0" styleClass="menuItem" text="Schedule Builder">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
