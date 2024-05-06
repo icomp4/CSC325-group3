@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.AddController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.AddController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -30,20 +30,20 @@
                         </Pane>
                         <HBox alignment="TOP_RIGHT" layoutX="239.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                             <children>
+                                <Button fx:id="scheduleBuilderBtn" onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="160.0" styleClass="menuItem" text="Schedule Builder">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Images/calendar.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
                                 <Button prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
                                     <graphic>
                                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../Images/account.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                                <Button onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="160.0" styleClass="menuItem" text="Schedule Builder">
-                                    <graphic>
-                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../Images/calendar.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>

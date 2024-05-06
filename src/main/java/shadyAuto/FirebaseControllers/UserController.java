@@ -22,7 +22,7 @@ public class UserController {
         UserController.db = db;
     }
 
-    public boolean SignUp(String fname, String lname, String email, String username, String password, boolean isManager) {
+    public static boolean SignUp(String fname, String lname, String email, String username, String password, boolean isManager) {
         UserRecord.CreateRequest user = new UserRecord.CreateRequest()
                 .setEmail(email)
                 .setPassword(password)
@@ -37,7 +37,7 @@ public class UserController {
             usernameMapping.put("email", email);
             usernameMapping.put("first name", fname);
             usernameMapping.put("last name", lname);
-            usernameMapping.put("is manager", isManager);
+            usernameMapping.put("isManager", isManager);
 
             db.initialize().collection("usernameMappings").document(username).set(usernameMapping);
 
@@ -115,6 +115,25 @@ public class UserController {
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error getting name by username", e);
             return null;
+        }
+    }
+    public boolean getIsManagerStatus(String username) {
+        try {
+            DocumentSnapshot document = db.initialize()
+                    .collection("usernameMappings")
+                    .document(username)
+                    .get()
+                    .get();
+
+            if (document.exists()) {
+                return document.getBoolean("isManager");
+            } else {
+                LOGGER.warning("Username not found: " + username);
+                return false;
+            }
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error getting manager status by username", e);
+            return false;
         }
     }
 }
