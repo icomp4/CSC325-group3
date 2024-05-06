@@ -122,7 +122,16 @@ public class AddController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    @FXML
+    void Logout(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("LoginScreen");
+            LoginScreen.currentUser = "";
+            LoginScreen.employeeName = "";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userController = new UserController(ShadyAuto.db);

@@ -40,7 +40,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                                <Button fx:id="accountBtn" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
+                                <Button fx:id="accountBtn" onAction="#Logout" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Logout">
                                     <graphic>
                                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
