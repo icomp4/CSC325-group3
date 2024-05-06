@@ -72,6 +72,7 @@ public class CustomerController {
                 return null;
             } else {
                 return new shadyAuto.Models.Customer(
+
                         querySnapshot.getDocuments().getFirst().getString("firstName"),
                         querySnapshot.getDocuments().getFirst().getString("lastName"),
                         querySnapshot.getDocuments().getFirst().getString("phoneNumber"),
@@ -104,4 +105,23 @@ public class CustomerController {
             return null;
         }
     }
+    public Customer[] GetAllCustomers() {
+        try {
+            ApiFuture<QuerySnapshot> query = db.initialize().collection("customers").get();
+            QuerySnapshot querySnapshot = query.get();
+            Customer[] customers = new Customer[querySnapshot.size()];
+            for (int i = 0; i < querySnapshot.size(); i++) {
+                customers[i] = new Customer(
+                        querySnapshot.getDocuments().get(i).getString("customerID"),
+                        querySnapshot.getDocuments().get(i).getString("firstname"),
+                        querySnapshot.getDocuments().get(i).getString("lastname"),
+                        querySnapshot.getDocuments().get(i).getString("phoneNumber")
+                );
+            }
+            return customers;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

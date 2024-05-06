@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.MainController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shadyAuto.Controllers.MainController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -42,20 +42,20 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button fx:id="scheduleBuilderBtn" onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="160.0" styleClass="menuItem" text="Schedule Builder">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/calendar.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <Button prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Images/account.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="scheduleBuilderBtn" onAction="#OpenScheduleBuilder" prefHeight="38.0" prefWidth="160.0" styleClass="menuItem" text="Schedule Builder">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/calendar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -162,35 +162,38 @@
          <center>
             <SplitPane dividerPositions="0.39981949458483756" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <items>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="440.0">
                      <children>
-                        <TableView layoutX="-2.0" prefHeight="560.0" prefWidth="442.0">
+                        <TableView fx:id="partTable" layoutX="-9.0" layoutY="21.0" prefHeight="354.0" prefWidth="442.0">
                            <columns>
-                              <TableColumn prefWidth="76.0" text="C1" />
-                              <TableColumn prefWidth="74.0" text="C2" />
+                              <TableColumn fx:id="partName" prefWidth="76.0" text="Name" />
+                              <TableColumn fx:id="partPrice" prefWidth="74.0" text="Price" />
                            </columns>
                         </TableView>
-                        <TextField layoutX="14.0" layoutY="573.0" promptText="Search Parts" />
-                        <Button layoutX="173.0" layoutY="573.0" mnemonicParsing="false" text="Add" />
+                        <TextField fx:id="totalTxt" editable="false" layoutX="30.0" layoutY="404.0" prefHeight="25.0" prefWidth="367.0" promptText="total" />
+                        <Button layoutX="23.0" layoutY="463.0" mnemonicParsing="false" onAction="#CreateInvoice" prefHeight="53.0" prefWidth="373.0" text="Create Invoice" />
+                        <Label layoutX="182.0" layoutY="1.0" text="Select Parts" />
                      </children>
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <TableView layoutX="3.0" prefHeight="367.0" prefWidth="657.0">
+                        <TableView fx:id="customerTable" layoutX="3.0" layoutY="21.0" prefHeight="314.0" prefWidth="657.0">
                            <columns>
-                              <TableColumn prefWidth="76.0" text="C1" />
+                              <TableColumn fx:id="customerID" prefWidth="76.0" text="ID" />
+                              <TableColumn fx:id="firstName" prefWidth="76.0" text="First " />
+                              <TableColumn fx:id="lastName" prefWidth="76.0" text="Last" />
                            </columns>
                         </TableView>
-                        <TextField layoutX="14.0" layoutY="383.0" prefHeight="25.0" prefWidth="200.0" promptText="search Invoice" />
-                        <Button layoutX="228.0" layoutY="383.0" mnemonicParsing="false" text="Remove" />
-                        <TextField layoutX="92.0" layoutY="538.0" prefHeight="38.0" prefWidth="165.0" promptText="Total Price" />
-                        <TableView layoutX="432.0" layoutY="383.0" prefHeight="204.0" prefWidth="150.0">
+                        <TableView fx:id="vehicleTable" layoutX="3.0" layoutY="356.0" prefHeight="297.0" prefWidth="657.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Item" />
-                              <TableColumn prefWidth="75.0" text="Price" />
+                              <TableColumn fx:id="vehicleID" prefWidth="76.0" text="ID" />
+                              <TableColumn fx:id="makeTxt" prefWidth="76.0" text="Make" />
+                              <TableColumn fx:id="modelTxt" prefWidth="76.0" text="Model" />
+                              <TableColumn fx:id="yearTxt" prefWidth="76.0" text="Year" />
                            </columns>
                         </TableView>
-                        <Button layoutX="16.0" layoutY="538.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="72.0" text="Bill Out" />
+                        <Label layoutX="290.0" layoutY="337.0" text="Select A Vehicle" />
+                        <Label layoutX="294.0" layoutY="3.0" text="Select A Customer" />
                      </children>
                   </AnchorPane>
                </items>
