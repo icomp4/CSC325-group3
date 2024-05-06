@@ -42,7 +42,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
+                        <Button onAction="#Logout" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Logout">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
