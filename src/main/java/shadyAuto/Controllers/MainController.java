@@ -4,10 +4,13 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import shadyAuto.FirebaseControllers.FirestoreDBConnection;
+import shadyAuto.FirebaseControllers.UserController;
 import shadyAuto.LoginScreen;
 import shadyAuto.ShadyAuto;
 
@@ -30,10 +33,23 @@ public class MainController implements Initializable {
 
     @FXML
     private AnchorPane slider;
+    @FXML
+    private Button scheduleBuilderBtn;
+    private UserController userController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        // Initialize UserController (assuming FirestoreDBConnection instance is provided)
+        FirestoreDBConnection dbConnection = new FirestoreDBConnection(); // Or however it's initialized
+        userController = new UserController(dbConnection);
+
+        // Example username retrieved from the login session
+        String currentUsername = LoginScreen.employeeName;
+
+        // Check if the user is a manager and modify the button's visibility
+        boolean isManager = userController.getIsManagerStatus(currentUsername);
+        scheduleBuilderBtn.setVisible(isManager);
         Exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
