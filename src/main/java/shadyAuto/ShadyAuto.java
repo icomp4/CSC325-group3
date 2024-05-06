@@ -36,14 +36,6 @@ public class ShadyAuto extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException {
-        String addScreen, employeeSchedule, employeeMainScreen, historyScreen, loginScreen, mainScreen, scheduleBuilder;
-        addScreen = "AddScreen";
-        employeeSchedule = "employee-schedule";
-        employeeMainScreen = "EmployeeMainScreen";
-        historyScreen = "HistoryScreen";
-        loginScreen = "LoginScreen";
-        mainScreen = "MainScreen";
-        scheduleBuilder = "schedule-builder";
 
 
         primaryStage = stage;
@@ -52,7 +44,7 @@ public class ShadyAuto extends Application {
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
 
-        scene = new Scene(loadFXML(mainScreen));
+        scene = new Scene(loadFXML("MainScreen"));
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
         stage.setScene(scene);
