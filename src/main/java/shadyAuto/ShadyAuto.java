@@ -13,6 +13,9 @@ import shadyAuto.FirebaseControllers.FirestoreDBConnection;
 import java.io.IOException;
 
 public class ShadyAuto extends Application {
+    //********************************
+    //Variables
+    //********************************
     public static Scene scene;
     public static Firestore fstore;
     public static FirebaseAuth fauth;
@@ -22,18 +25,34 @@ public class ShadyAuto extends Application {
     private static Stage primaryStage;
     public static FirestoreDBConnection db = new FirestoreDBConnection();
 
+
+
+
+    //********************************
+    //Methods
+    //********************************
     public static Stage getPrimaryStage(){
         return primaryStage;
     }
     @Override
     public void start(Stage stage) throws IOException {
+        String addScreen, employeeSchedule, employeeMainScreen, historyScreen, loginScreen, mainScreen, scheduleBuilder;
+        addScreen = "AddScreen";
+        employeeSchedule = "employee-schedule";
+        employeeMainScreen = "EmployeeMainScreen";
+        historyScreen = "HistoryScreen";
+        loginScreen = "LoginScreen";
+        mainScreen = "MainScreen";
+        scheduleBuilder = "schedule-builder";
+
+
         primaryStage = stage;
 
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
         //update this line as much as you can
 
-        scene = new Scene(loadFXML("MainScreen"));
+        scene = new Scene(loadFXML(mainScreen));
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
         stage.setScene(scene);
