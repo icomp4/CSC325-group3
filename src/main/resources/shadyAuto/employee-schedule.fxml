@@ -3,9 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -21,7 +19,7 @@
    <children>
       <BorderPane prefHeight="400.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="65.0" prefWidth="690.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="65.0" prefWidth="690.0" style="-fx-background-color: 0.0;" BorderPane.alignment="CENTER">
                <children>
                   <Pane layoutX="102.0" layoutY="20.0" prefHeight="25.0" prefWidth="706.0" style="-fx-background-color: #38383a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -151,15 +149,7 @@
          <center>
             <VBox prefHeight="569.0" prefWidth="867.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <MenuBar>
-                     <menus>
-                        <Menu mnemonicParsing="false" text="Menu">
-                           <items>
-                              <MenuItem mnemonicParsing="false" onAction="#switchToMainScreen" text="Exit to Main Menu" />
-                           </items>
-                        </Menu>
-                     </menus>
-                  </MenuBar>
+                  <MenuBar />
                   <Label fx:id="welcomeText1" alignment="TOP_CENTER" text="Schedule">
                      <font>
                         <Font size="29.0" />
