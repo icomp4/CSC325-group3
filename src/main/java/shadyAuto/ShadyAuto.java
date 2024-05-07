@@ -15,6 +15,9 @@ import shadyAuto.FirebaseControllers.UserController;
 import java.io.IOException;
 
 public class ShadyAuto extends Application {
+    //********************************
+    //Variables
+    //********************************
     public static Scene scene;
     public static Firestore fstore;
     public static FirebaseAuth fauth;
@@ -24,11 +27,19 @@ public class ShadyAuto extends Application {
     private static Stage primaryStage;
     public static FirestoreDBConnection db = new FirestoreDBConnection();
 
+
+
+
+    //********************************
+    //Methods
+    //********************************
     public static Stage getPrimaryStage(){
         return primaryStage;
     }
     @Override
     public void start(Stage stage) throws IOException {
+
+
         primaryStage = stage;
 
         fstore = contxtFirebase.firebase();
