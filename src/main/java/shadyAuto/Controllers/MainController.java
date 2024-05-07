@@ -96,11 +96,19 @@ public class MainController implements Initializable {
                     setText(null);
                     setStyle("");
                 } else {
-                    setText(String.format("$%.2f", item));
+                    setText(item.toString());
                 }
             }
         });
-
+        partTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            ObservableList<Part> selectedParts = partTable.getSelectionModel().getSelectedItems();
+            double total = 0;
+            for (Part part : selectedParts) {
+                total += part.getPrice();
+            }
+            totalTxt.setText(String.format("$%.2f", total));
+        });
+        totalTxt.setStyle("-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;");
         userController = new UserController(ShadyAuto.db);
         customerController = new CustomerController(ShadyAuto.db);
 
