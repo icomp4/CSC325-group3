@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import shadyAuto.FirebaseControllers.FirestoreDBConnection;
+import shadyAuto.FirebaseControllers.InvoiceController;
 import shadyAuto.FirebaseControllers.UserController;
 
 import java.io.IOException;
@@ -32,7 +33,6 @@ public class ShadyAuto extends Application {
 
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
-        //update this line as much as you can
         scene = new Scene(loadFXML("MainScreen"));
         stage.setTitle("shadyAuto");
         scene.getStylesheets().add(getClass().getResource("/styling/dracula.css").toExternalForm());
