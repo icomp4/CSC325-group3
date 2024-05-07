@@ -249,8 +249,17 @@ public class MainController implements Initializable {
         } else {
             System.out.println("Invoice creation failed");
         }
+    }
 
-
+    @FXML
+    void Logout(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("LoginScreen");
+            LoginScreen.currentUser = "";
+            LoginScreen.employeeName = "";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

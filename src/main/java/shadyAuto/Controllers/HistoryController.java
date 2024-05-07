@@ -168,6 +168,15 @@ public class HistoryController implements Initializable {
             invoiceTable.getItems().add(invoice);
         }
     }
-
+    @FXML
+    void Logout(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("LoginScreen");
+            LoginScreen.currentUser = "";
+            LoginScreen.employeeName = "";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

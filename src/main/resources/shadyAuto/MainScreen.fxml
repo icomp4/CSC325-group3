@@ -42,7 +42,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Account">
+                        <Button onAction="#Logout" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Logout">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -164,7 +164,7 @@
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="653.0" prefWidth="443.0">
                      <children>
-                        <TableView fx:id="partTable" layoutX="-9.0" layoutY="21.0" prefHeight="354.0" prefWidth="442.0">
+                        <TableView fx:id="partTable" layoutX="-9.0" layoutY="21.0" prefHeight="354.0" prefWidth="442.0" AnchorPane.leftAnchor="15.0">
                            <columns>
                               <TableColumn fx:id="partName" prefWidth="76.0" text="Name" />
                               <TableColumn fx:id="partPrice" prefWidth="74.0" text="Price" />
