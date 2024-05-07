@@ -3,6 +3,7 @@ package shadyAuto.Controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +14,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import shadyAuto.FirebaseControllers.ScheduleController;
 import shadyAuto.FirebaseControllers.UserController;
 import shadyAuto.LoginScreen;
@@ -110,8 +113,12 @@ public class ScheduleBuilderController implements Initializable {
     //Alerts
     Alert showAlert = new Alert(Alert.AlertType.NONE);
 
-
-
+    @FXML
+    private Label Menu;
+    @FXML
+    private AnchorPane slider;
+    @FXML
+    private Label MenuClose;
     @FXML
     private Label title;
 
@@ -123,6 +130,38 @@ public class ScheduleBuilderController implements Initializable {
         scheduleBuilderBtn.setVisible(isManager);
         Exit.setOnMouseClicked(event -> {
             System.exit(0);
+        });
+        slider.setTranslateX(0); //-176 to show again
+        Menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-176);
+
+            slide.setOnFinished((ActionEvent e)-> {
+                Menu.setVisible(false);
+                MenuClose.setVisible(true);
+            });
+        });
+
+        MenuClose.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(-176);
+            slide.play();
+
+            slider.setTranslateX(0);
+
+            slide.setOnFinished((ActionEvent e)-> {
+                Menu.setVisible(true);
+                MenuClose.setVisible(false);
+            });
         });
 
         tableColumnName.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Name"));

@@ -1,5 +1,6 @@
 package shadyAuto.Controllers;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import shadyAuto.FirebaseControllers.CustomerController;
 import shadyAuto.FirebaseControllers.UserController;
 import shadyAuto.FirebaseControllers.VehicleController;
@@ -120,12 +122,56 @@ public class AddController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    @FXML
+    void Logout(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("LoginScreen");
+            LoginScreen.currentUser = "";
+            LoginScreen.employeeName = "";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userController = new UserController(ShadyAuto.db);
         String currentUsername = LoginScreen.currentUser;
         boolean isManager = userController.getIsManagerStatus(currentUsername);
         scheduleBuilderBtn.setVisible(isManager);
+        Exit.setOnMouseClicked(event -> {
+            System.exit(0);
+        });
+        slider.setTranslateX(0); //-176 to show again
+        Menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-176);
+
+            slide.setOnFinished((ActionEvent e)-> {
+                Menu.setVisible(false);
+                MenuClose.setVisible(true);
+            });
+        });
+
+        MenuClose.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(-176);
+            slide.play();
+
+            slider.setTranslateX(0);
+
+            slide.setOnFinished((ActionEvent e)-> {
+                Menu.setVisible(true);
+                MenuClose.setVisible(false);
+            });
+        });
     }
 }
