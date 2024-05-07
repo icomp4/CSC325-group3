@@ -174,7 +174,16 @@ public class ScheduleBuilderController implements Initializable {
         tableColumnSunday.setCellValueFactory(new PropertyValueFactory<Schedule,String>("Sunday"));
     }
 
-
+    @FXML
+    void Logout(ActionEvent event) {
+        try {
+            ShadyAuto.setRoot("LoginScreen");
+            LoginScreen.currentUser = "";
+            LoginScreen.employeeName = "";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
