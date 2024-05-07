@@ -2533,7 +2533,7 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
   -fx-background-color: -color-input-border, -color-input-bg;
   -fx-background-insets: 0, 1px;
   -fx-background-radius: 6px, 5px;
-  -fx-text-fill: white;
+  -fx-text-fill: #8355d0;
   -fx-highlight-fill: -color-input-bg-highlight;
   -fx-highlight-text-fill: -color-input-fg-highlight;
   -fx-prompt-text-fill: -color-fg-subtle;
@@ -2541,6 +2541,7 @@ Add support for NO_HEADER tweak in tables .table-view.no-header > .column-header
   -fx-cursor: text;
 }
 .text-input:focused {
+  -fx-prompt-text-fill: transparent;
 }
 .text-input:disabled {
   -fx-opacity: 0.4;

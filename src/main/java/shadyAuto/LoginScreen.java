@@ -55,9 +55,6 @@ public class LoginScreen implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameTxt.setStyle("-fx-background-color: white;");
         pwTxt.setStyle("-fx-background-color: white;");
-        Exit.setOnMouseClicked(event -> {
-            System.exit(0);
-        });
         
     }
 

@@ -128,9 +128,6 @@ public class ScheduleBuilderController implements Initializable {
         String currentUsername = LoginScreen.currentUser;
         boolean isManager = userController.getIsManagerStatus(currentUsername);
         scheduleBuilderBtn.setVisible(isManager);
-        Exit.setOnMouseClicked(event -> {
-            System.exit(0);
-        });
         slider.setTranslateX(0); //-176 to show again
         Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
