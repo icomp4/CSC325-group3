@@ -378,49 +378,12 @@ public class ScheduleBuilderController implements Initializable {
 
 
 
-
-
-    //*****************************************************************************************************************
-    //                      Event Handler to temporarily switch and Navigating Between Windows
-    //*****************************************************************************************************************
-    public void switchToScheduleBuilder(){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("old-schedule-builder.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = ShadyAuto.getPrimaryStage();
-
-            // Set the new scene
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
     /**
      * New FireBase Methods added
      */
 
     @FXML
     public void createSchedule(Schedule schedule) {
-        //default
-//        String name = "TestSchedule";
-//        String[] days = {"2-9", "", "1-8", "2-9", "2-9", "", ""};
-
         //New version
         String name = schedule.getName();
         String[] days = {schedule.getMonday(), schedule.getTuesday(), schedule.getWednesday(),
