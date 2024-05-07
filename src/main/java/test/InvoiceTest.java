@@ -42,8 +42,14 @@ public class InvoiceTest {
         assertEquals("testID123", invoice.getInvoiceID());
         assertEquals("testVehicleID123", invoice.getVehicleID());
         assertEquals("testCustomerID123", invoice.getCustomerID());
-        assertEquals("$600.00", invoice.getPrice());
+        assertEquals("600.0", String.valueOf(invoice.getPrice()));
         assertEquals("2021-04-01", invoice.getDate());
+    }
+    @Test
+    public void testCustomGetters() {
+        Invoice invoice2 = new Invoice("028b516b-ef11-4f33-8be5-6219fe7c5402", "testVehicleID123", "testCustomerID123", new ArrayList<Part>(), "2021-04-01");
+        assertEquals("nuna mako", invoice2.getOwnerName()); // calls the firebase database to retrieve the full name of the owner associated with the invoice
+        assertEquals("2019 volkswagen beetle", invoice2.getVehicleDetails()); // calls the firebase database to retrieve the vehicle details associated with the invoice
     }
 
 
