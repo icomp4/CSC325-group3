@@ -134,13 +134,11 @@ public class AddController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         userController = new UserController(ShadyAuto.db);
         String currentUsername = LoginScreen.currentUser;
         boolean isManager = userController.getIsManagerStatus(currentUsername);
         scheduleBuilderBtn.setVisible(isManager);
-        Exit.setOnMouseClicked(event -> {
-            System.exit(0);
-        });
         slider.setTranslateX(0); //-176 to show again
         Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();

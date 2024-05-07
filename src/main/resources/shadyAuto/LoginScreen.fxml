@@ -39,14 +39,6 @@
             <Button mnemonicParsing="false" onAction="#Login" prefHeight="25.0" prefWidth="151.0" text="Login" />
          </children>
       </VBox>
-      <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="706.0" GridPane.columnIndex="4">
-         <children>
-            <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/exit.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
+      <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="706.0" GridPane.columnIndex="4" />
    </children>
 </GridPane>
