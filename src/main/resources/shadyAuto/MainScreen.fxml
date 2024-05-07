@@ -164,7 +164,7 @@
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="440.0">
                      <children>
-                        <TableView fx:id="partTable" layoutX="-9.0" layoutY="21.0" prefHeight="354.0" prefWidth="442.0">
+                        <TableView fx:id="partTable" layoutX="-9.0" layoutY="21.0" prefHeight="354.0" prefWidth="442.0" AnchorPane.leftAnchor="15.0">
                            <columns>
                               <TableColumn fx:id="partName" prefWidth="76.0" text="Name" />
                               <TableColumn fx:id="partPrice" prefWidth="74.0" text="Price" />
